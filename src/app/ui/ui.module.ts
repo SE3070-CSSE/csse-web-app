@@ -4,10 +4,12 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   imports: [
     AppRoutingModule,
+    ClarityModule,
     CommonModule
   ],
   declarations: [LayoutComponent, HeaderComponent, FooterComponent],

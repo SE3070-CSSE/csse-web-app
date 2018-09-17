@@ -6,6 +6,7 @@ import { UiModule } from './ui/ui.module';
 import { AppRoutingModule } from './/app-routing.module';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HomeComponent } from './home/home.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    ClarityModule,
     UiModule
   ],
   providers: [],

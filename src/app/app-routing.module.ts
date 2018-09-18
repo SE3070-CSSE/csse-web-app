@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
-import { AuthGuardService } from './auth-guard.service';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './auth.service';
-import { ItemAddComponent } from './item-add/item-add.component';
-import { ViewItemsComponent } from './view-items/view-items.component';
-import { SupplierAddComponent } from './supplier-add/supplier-add.component';
-import { SupplierViewComponent } from './supplier-view/supplier-view.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service';
+import { ItemAddComponent } from './components/item-add/item-add.component';
+import { ViewItemsComponent } from './components/view-items/view-items.component';
+import { SupplierAddComponent } from './components/supplier-add/supplier-add.component';
+import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

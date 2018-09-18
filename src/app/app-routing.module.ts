@@ -5,10 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './auth-guard.service';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
-import { ItemMainComponent } from './item-main/item-main.component';
-import { SupplierMainComponent } from './supplier-main/supplier-main.component';
-import { PaymentMainComponent } from './payment-main/payment-main.component';
-import { EmployeeMainComponent } from './employee-main/employee-main.component';
+import { ItemAddComponent } from './item-add/item-add.component';
+import { ViewItemsComponent } from './view-items/view-items.component';
+import { SupplierAddComponent } from './supplier-add/supplier-add.component';
+import { SupplierViewComponent } from './supplier-view/supplier-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,10 +19,20 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuardService],
     children: [
-      { path: 'items', component: ItemMainComponent },
-      { path: 'suppliers', component: SupplierMainComponent },
-      { path: 'payments', component: PaymentMainComponent },
-      { path: 'employees', component: EmployeeMainComponent }
+      {
+        path: 'items',
+        children: [
+          { path: 'add', component: ItemAddComponent },
+          { path: 'view', component: ViewItemsComponent }
+        ]
+      },
+      {
+        path: 'suppliers',
+        children: [
+          { path: 'add', component: SupplierAddComponent },
+          { path: 'view', component: SupplierViewComponent }
+        ]
+      }
     ]
   }
 ];

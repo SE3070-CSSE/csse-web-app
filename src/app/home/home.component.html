@@ -1,22 +1,27 @@
-<nav class="subnav">
-  <ul class="nav">
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/home/items"  routerLinkActive="active">Items</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/home/payments"  routerLinkActive="active">Payments</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/home/suppliers"  routerLinkActive="active">Suppliers</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/home/employees"  routerLinkActive="active">Employees</a>
-      </li>
-  </ul>
-</nav>
-<div class="content-container">
-  <main class="content-area">
-      <router-outlet></router-outlet>
-  </main>
-</div>
+<div class="content-container" style="height:100%">
+        <main class="content-area">
+          <router-outlet></router-outlet>
+        </main>
+        <nav class="sidenav">
+            <section class="sidenav-content">
+                <section class="nav-group collapsible">
+                    <input id="itemTitle" type="checkbox">
+                    <label for="itemTitle">Item Actions</label>
+                    <ul class="nav-list">
+                      <li><a class="nav-link" routerLink="/home/items/view"  routerLinkActive="active">View Item Database</a></li>  
+                      <li><a class="nav-link" routerLink="/home/items/add"  routerLinkActive="active">Add New Item</a></li>
+                    </ul>
+                </section>
+                <section class="nav-group collapsible">
+                    <input id="supplTitle" type="checkbox">
+                    <label for="supplTitle">Supplier Actions</label>
+                    <ul class="nav-list">
+                        <li><a class="nav-link" routerLink="/home/suppliers/view"  routerLinkActive="active">View Supplier Database</a></li>  
+                        <li><a class="nav-link" routerLink="/home/suppliers/add"  routerLinkActive="active">Add New Supplier</a></li>
+                    </ul>
+                </section>
+            </section>
+        </nav>
+    </div>
+
 

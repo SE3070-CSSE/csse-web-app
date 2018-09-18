@@ -8,10 +8,10 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ClarityModule } from '@clr/angular';
 import { LoginComponent } from './login/login.component';
-import { ItemMainComponent } from './item-main/item-main.component';
-import { SupplierMainComponent } from './supplier-main/supplier-main.component';
-import { PaymentMainComponent } from './payment-main/payment-main.component';
-import { EmployeeMainComponent } from './employee-main/employee-main.component';
+import { ItemAddComponent } from './item-add/item-add.component';
+import { ViewItemsComponent } from './view-items/view-items.component';
+import { SupplierAddComponent } from './supplier-add/supplier-add.component';
+import { SupplierViewComponent } from './supplier-view/supplier-view.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +19,10 @@ import { EmployeeMainComponent } from './employee-main/employee-main.component';
     AboutComponent,
     HomeComponent,
     LoginComponent,
-    ItemMainComponent,
-    SupplierMainComponent,
-    PaymentMainComponent,
-    EmployeeMainComponent
+    ItemAddComponent,
+    ViewItemsComponent,
+    SupplierAddComponent,
+    SupplierViewComponent
   ],
   imports: [
     AppRoutingModule,

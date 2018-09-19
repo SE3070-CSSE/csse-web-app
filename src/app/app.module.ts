@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UiModule } from './components/ui/ui.module';
@@ -25,6 +26,7 @@ import { SupplierViewComponent } from './components/supplier-view/supplier-view.
     SupplierViewComponent
   ],
   imports: [
+    HttpClientModule,
     AppRoutingModule,
     BrowserModule,
     ClarityModule,

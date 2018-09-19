@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  itemEndpoint: 'https://csse-backend.herokuapp.com/items'
+  itemEndpoint: 'https://csse-backend.herokuapp.com/items',
+  loginUrl: 'https://csse-backend.herokuapp.com/login'
 };
 
 /*

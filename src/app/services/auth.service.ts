@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
   isLoggedIn = false;
   headers: HttpHeaders = new HttpHeaders();
 
-  loginUrl = 'https://csse-backend.herokuapp.com/login';
+  loginUrl = environment.loginUrl;
   JWTtoken = '';
   // store the URL so we can redirect after logging in
   redirectUrl: string;

@@ -2,10 +2,18 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+
 @Component({
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
+
+  // TODO: replace this with a data binding to a form so that uname + password can be set
+  user: any = {
+    username: 'saman',
+    password: '123'
+  };
+
   message: string;
 
   constructor(public authService: AuthService, public router: Router) {
@@ -19,7 +27,7 @@ export class LoginComponent {
   login() {
     this.message = 'Trying to log in ...';
 
-    this.authService.login().subscribe(() => {
+    this.authService.login(this.user).subscribe(() => {
       this.setMessage();
       if (this.authService.isLoggedIn) {
         // Get the redirect URL from our auth service

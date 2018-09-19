@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  itemEndpoint: 'https://csse-backend.herokuapp.com/items'
 };

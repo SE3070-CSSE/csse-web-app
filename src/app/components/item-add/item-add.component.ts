@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Item } from '../../models/item';
+import { ItemService } from '../../services/item.service';
 
 @Component({
   selector: 'app-item-add',
@@ -9,21 +10,44 @@ import { Item } from '../../models/item';
 })
 export class ItemAddComponent implements OnInit {
 
-  powers = ['Really Smart', 'Super Flexible',
-    'Super Hot', 'Weather Changer'];
+  categories = ['BEAMS', 'NAILS',
+    'WINDOWS', 'PLANKS'];
 
-  model = new Item('Steel Bars', 200);
+  model = new Item(null, null, null, null, '-');
 
-  submitted = false;
+  // submitted = false;
 
   onSubmit() {
     console.log('submit clicked');
     console.log('item : ' + JSON.stringify(this.model));
-    this.toastr.success('Item added!');
-    this.submitted = true;
+    this.itemService.addItem(this.model).subscribe(
+      data => this.toastr.success('Item added'),
+      err  => this.toastr.error(err)
+    );
   }
 
-  constructor(private toastr: ToastrService) { }
+  validateNumberKeyPress(evt) {
+    const keyEvent = evt || window.event;
+    let key;
+    const regex = /[0-9]|\./;
+
+    // get keycode as string
+    key = keyEvent.keyCode || keyEvent.which;
+    key = String.fromCharCode(key);
+
+    // allow backspace, delete, left and right
+    if (keyEvent.keyCode === 8 || keyEvent.keyCode === 46 || keyEvent.keyCode === 37 || keyEvent.keyCode === 39) {
+      return true;
+    }
+    if ( !regex.test(key) ) {
+      keyEvent.returnValue = false;
+      if (keyEvent.preventDefault) {
+        keyEvent.preventDefault();
+      }
+    }
+  }
+
+  constructor(private toastr: ToastrService, private itemService: ItemService) { }
 
   ngOnInit() {
   }

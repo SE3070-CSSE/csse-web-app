@@ -1,9 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs/index';
+import { Observable, of, throwError } from 'rxjs/index';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { environment } from './../../environments/environment';
 import { AuthService } from './auth.service';
+import { Item } from '../models/item';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,36 +14,48 @@ export class ItemService {
 
   private itemUrl = environment.itemEndpoint;
   private headers: HttpHeaders = new HttpHeaders();
+  private httpOptions = {};
 
   /**
-   * @param authService is used to access the JWT token provided by the server during login.
-   * The token is used to authorize the request in the backend
+   * @param authService is used to access the JWT token provided by the backend server during login.
+   * The token is used to authorize all requests to the backend
    */
-  constructor(public authService: AuthService, private http: HttpClient) {
+  constructor(public authService: AuthService, private http: HttpClient, private toastr: ToastrService) {
     console.log('Inside item service');
     this.headers = this.headers.append('Content-Type', 'application/json');
     this.headers = this.headers.append('Authorization', authService.JWTtoken);
+    this.httpOptions = { headers: this.headers };
   }
 
   getItems(): Observable<any[]> {
-    return this.http.get<any[]>(this.itemUrl, { headers: this.headers })
+    return this.http.get<any[]>(this.itemUrl, this.httpOptions)
       .pipe(
         tap(items => console.log(JSON.stringify(items))),
-        catchError(this.handleError('getItems', []))
+        catchError(this.handleError('getItems', [], 'Could not get items from server'))
       );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  addItem (item: Item): Observable<Item> {
+    return this.http.post<Item>(this.itemUrl, item, this.httpOptions).pipe(
+      tap((resultItem: any) => console.log(`added item w/ id=${resultItem._id}`)),
+      catchError(this.handleError<Item>('addItem'))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error('error in item service ' + JSON.stringify(error)); // log to console instead
+      console.error('error ' + JSON.stringify(error)); // log to console instead
 
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
+      if (result) {
+        this.toastr.error(`Internal error: ${message}`);
+        return of(result as T);
+      } else {
+        return throwError(`${operation} failed`);
+      }
     };
   }
 

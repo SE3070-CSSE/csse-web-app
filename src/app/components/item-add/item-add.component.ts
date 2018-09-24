@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Item } from '../../models/item';
 
 @Component({
@@ -18,10 +19,11 @@ export class ItemAddComponent implements OnInit {
   onSubmit() {
     console.log('submit clicked');
     console.log('item : ' + JSON.stringify(this.model));
+    this.toastr.success('Item added!');
     this.submitted = true;
   }
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   ngOnInit() {
   }

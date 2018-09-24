@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { UiModule } from './components/ui/ui.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     BrowserModule,
     FormsModule,
     ClrFormsNextModule,

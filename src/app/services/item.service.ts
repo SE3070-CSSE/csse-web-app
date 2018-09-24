@@ -42,6 +42,13 @@ export class ItemService {
     );
   }
 
+  deleteItems (items: Item[]): Observable<any> {
+    return this.http.request('delete', this.itemUrl, { headers: this.headers, body: items }).pipe(
+      tap((resultItem: any) => console.log('deleted items')),
+      catchError(this.handleError<Item>('deleteItems'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {
 

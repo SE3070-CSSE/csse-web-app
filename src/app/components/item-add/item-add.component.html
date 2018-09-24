@@ -1,3 +1,12 @@
-<p>
-  item-add works!
-</p>
+<!-- TODO: add validation -->
+<form clrForm #itemForm="ngForm" (ngSubmit)="onSubmit()">
+    <clr-input-container>
+        <label for="itemName">Item Name</label>
+        <input clrInput type="text" [(ngModel)]="model.itemName" name="itemName" required/>
+    </clr-input-container>
+    <clr-input-container>
+        <label for="price">Price</label>
+        <input clrInput type="text" [(ngModel)]="model.price" name="price" required/>
+    </clr-input-container>
+    <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Submit</button>
+</form>

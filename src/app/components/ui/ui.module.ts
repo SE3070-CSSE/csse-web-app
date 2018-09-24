@@ -8,9 +8,9 @@ import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   imports: [
-    AppRoutingModule,
     ClarityModule,
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   declarations: [LayoutComponent, HeaderComponent, FooterComponent],
   exports: [LayoutComponent]

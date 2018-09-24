@@ -9,6 +9,7 @@ import { ItemAddComponent } from './components/item-add/item-add.component';
 import { ViewItemsComponent } from './components/view-items/view-items.component';
 import { SupplierAddComponent } from './components/supplier-add/supplier-add.component';
 import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -38,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(routes) ],
   exports: [RouterModule],
   providers: [
     AuthGuardService,

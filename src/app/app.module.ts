@@ -7,12 +7,13 @@ import { UiModule } from './components/ui/ui.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
-import { ClarityModule } from '@clr/angular';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 import { LoginComponent } from './components/login/login.component';
 import { ItemAddComponent } from './components/item-add/item-add.component';
 import { ViewItemsComponent } from './components/view-items/view-items.component';
 import { SupplierAddComponent } from './components/supplier-add/supplier-add.component';
 import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,12 @@ import { SupplierViewComponent } from './components/supplier-view/supplier-view.
   ],
   imports: [
     HttpClientModule,
-    AppRoutingModule,
     BrowserModule,
+    FormsModule,
+    ClrFormsNextModule,
     ClarityModule,
-    UiModule
+    UiModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

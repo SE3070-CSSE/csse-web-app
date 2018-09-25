@@ -15,6 +15,7 @@ import { ViewItemsComponent } from './components/view-items/view-items.component
 import { SupplierAddComponent } from './components/supplier-add/supplier-add.component';
 import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
 import { FormsModule } from '@angular/forms';
+import { PurchaseRequestViewComponent } from './components/purchase-request-view/purchase-request-view.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     ItemAddComponent,
     ViewItemsComponent,
     SupplierAddComponent,
-    SupplierViewComponent
+    SupplierViewComponent,
+    PurchaseRequestViewComponent
   ],
   imports: [
     HttpClientModule,

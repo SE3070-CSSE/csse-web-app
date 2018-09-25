@@ -16,5 +16,39 @@ export class PurchaseRequestService {
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
-  constructor() { }
+  constructor(public authService: AuthService, private http: HttpClient, private toastr: ToastrService) {
+    console.log('Inside item service');
+    this.headers = this.headers.append('Content-Type', 'application/json');
+    this.headers = this.headers.append('Authorization', authService.JWTtoken);
+    this.httpOptions = { headers: this.headers };
+  }
+
+  /**
+   *  GET: Get a list of items from the server. Returns the list of items upon success.
+   */
+  getPurchaseRequests(): Observable<any[]> {
+    return this.http.get<any[]>(this.purchaseRequestURL, this.httpOptions)
+      .pipe(
+        tap(requests => console.log(JSON.stringify(requests))),
+        catchError(this.handleError('getPurchaseRequests', [], 'Could not get purchase requests from server'))
+      );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T, message?: string) {
+    return (error: any): Observable<T> => {
+
+      console.error('error ' + JSON.stringify(error)); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      if (result) {
+        this.toastr.error(`Internal error: ${message}`);
+        return of(result as T);
+      } else {
+        return throwError(`${operation} failed`);
+      }
+    };
+  }
+
 }

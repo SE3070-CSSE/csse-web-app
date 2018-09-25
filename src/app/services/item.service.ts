@@ -53,10 +53,10 @@ export class ItemService {
    *  PUT: update the item on the server. Returns the updated item upon success.
    * @param item item to be updated
    */
-  updateHero(item: Item): Observable<Item> {
+  updateItem(item: Item): Observable<Item> {
     return this.http.put<Item>(this.itemUrl, item, this.httpOptions)
       .pipe(
-        catchError(this.handleError<Item>('updateHero', item, 'Could not update Item'))
+        catchError(this.handleError<Item>('updateItem'))
       );
   }
 

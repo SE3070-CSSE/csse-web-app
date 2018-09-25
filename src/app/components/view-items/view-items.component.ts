@@ -54,16 +54,37 @@ export class ViewItemsComponent implements OnInit {
 
   onSubmitEdited() {
     this.toastr.info(JSON.stringify(this.model));
-    // console.log(this.selected);
-    // this.itemService.deleteItems(JSON.parse(JSON.stringify(this.selected)))
-    //   .subscribe(
-    //     any => {
-    //       console.log('deleted items' + this.selected);
-    //       this.toastr.success('deleted items');
-    //       this.getItems();
-    //     },
-    //     err  => this.toastr.error(err)
-    //   );
+    console.log(this.model);
+    this.itemService.updateItem(JSON.parse(JSON.stringify(this.selected)))
+      .subscribe(
+        any => {
+          console.log('updated item' + JSON.stringify(this.model));
+          this.toastr.success('Item updated successfully');
+          this.getItems();
+        },
+        err  => this.toastr.error(err)
+      );
+  }
+
+  validateNumberKeyPress(evt) {
+    const keyEvent = evt || window.event;
+    let key;
+    const regex = /[0-9]|\./;
+
+    // get keycode as string
+    key = keyEvent.keyCode || keyEvent.which;
+    key = String.fromCharCode(key);
+
+    // allow backspace, delete, left and right
+    if (keyEvent.keyCode === 8 || keyEvent.keyCode === 46 || keyEvent.keyCode === 37 || keyEvent.keyCode === 39) {
+      return true;
+    }
+    if ( !regex.test(key) ) {
+      keyEvent.returnValue = false;
+      if (keyEvent.preventDefault) {
+        keyEvent.preventDefault();
+      }
+    }
   }
 
 }

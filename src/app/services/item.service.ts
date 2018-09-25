@@ -27,6 +27,9 @@ export class ItemService {
     this.httpOptions = { headers: this.headers };
   }
 
+  /**
+   *  GET: Get a list of items from the server. Returns the list of items upon success.
+   */
   getItems(): Observable<any[]> {
     return this.http.get<any[]>(this.itemUrl, this.httpOptions)
       .pipe(
@@ -35,20 +38,45 @@ export class ItemService {
       );
   }
 
-  addItem (item: Item): Observable<Item> {
+  /**
+   *  POST: Add item to database. Returns the added item upon success.
+   * @param item The Item to add
+   */
+  addItem(item: Item): Observable<Item> {
     return this.http.post<Item>(this.itemUrl, item, this.httpOptions).pipe(
       tap((resultItem: any) => console.log(`added item w/ id=${resultItem._id}`)),
       catchError(this.handleError<Item>('addItem'))
     );
   }
 
-  deleteItems (items: Item[]): Observable<any> {
+  /**
+   *  PUT: update the item on the server. Returns the updated item upon success.
+   * @param item item to be updated
+   */
+  updateHero(item: Item): Observable<Item> {
+    return this.http.put<Item>(this.itemUrl, item, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Item>('updateHero', item, 'Could not update Item'))
+      );
+  }
+
+  /**
+   * DELETE: delete a set of items
+   * @param items contains a list of items to delete
+   */
+  deleteItems(items: Item[]): Observable<any> {
     return this.http.request('delete', this.itemUrl, { headers: this.headers, body: items }).pipe(
       tap((resultItem: any) => console.log('deleted items')),
       catchError(this.handleError<Item>('deleteItems'))
     );
   }
 
+  /**
+   * Http error handling method
+   * @param operation Name of the operation
+   * @param result result to be passed in response(optional)
+   * @param message message to be shown on error(optional) only works if result is passed
+   */
   private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {
 

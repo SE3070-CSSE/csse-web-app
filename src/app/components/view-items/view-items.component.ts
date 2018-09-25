@@ -52,8 +52,18 @@ export class ViewItemsComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  onSubmitEdited() {
     this.toastr.info(JSON.stringify(this.model));
+    // console.log(this.selected);
+    // this.itemService.deleteItems(JSON.parse(JSON.stringify(this.selected)))
+    //   .subscribe(
+    //     any => {
+    //       console.log('deleted items' + this.selected);
+    //       this.toastr.success('deleted items');
+    //       this.getItems();
+    //     },
+    //     err  => this.toastr.error(err)
+    //   );
   }
 
 }

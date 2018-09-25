@@ -13,7 +13,7 @@
 <clr-modal [(clrModalOpen)]="modalOpened">
     <h3 class="modal-title">Edit Item Details</h3>
     <div class="modal-body">
-        <form #itemForm="ngForm" (ngSubmit)="onSubmit()" class="clr-form clr-form-horizontal">
+        <form #itemForm="ngForm" (ngSubmit)="onSubmitEdited()" class="clr-form clr-form-horizontal">
             <section class="form-block">
                 <div class="form-group">
                     <label for="itemname">Item Name</label>

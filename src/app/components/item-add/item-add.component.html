@@ -2,7 +2,7 @@
 <h2 class="form-header">
     Add an Item
 </h2>
-<form #itemForm="ngForm" (ngSubmit)="onSubmit()" class="clr-form clr-form-horizontal">
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(); itemForm.reset();" class="clr-form clr-form-horizontal">
     <section class="form-block">
         <div class="form-group">
             <label for="itemname">Item Name</label>

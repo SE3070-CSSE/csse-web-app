@@ -20,10 +20,10 @@ export class ItemAddComponent implements OnInit {
   onSubmit() {
     console.log('submit clicked');
     console.log('item : ' + JSON.stringify(this.model));
-    this.itemService.addItem(this.model).subscribe(
-      data => this.toastr.success('Item added'),
-      err  => this.toastr.error(err)
-    );
+    // this.itemService.addItem(this.model).subscribe(
+    //   data => this.toastr.success('Item added'),
+    //   err  => this.toastr.error(err)
+    // );
   }
 
   validateNumberKeyPress(evt) {

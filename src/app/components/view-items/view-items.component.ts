@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemService} from '../../services/item.service';
 import { ToastrService } from 'ngx-toastr';
+import { ItemService } from '../../services/item.service';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-view-items',
@@ -10,6 +11,12 @@ import { ToastrService } from 'ngx-toastr';
 export class ViewItemsComponent implements OnInit {
   items: any[];
   selected: string[] = [];
+  selectedForEdit;
+  modalOpened;
+  categories = ['BEAMS', 'NAILS',
+  'WINDOWS', 'PLANKS'];
+  model = new Item(null, null, null, null, '-');
+
   constructor(private toastr: ToastrService, private itemService: ItemService) { }
 
   ngOnInit() {
@@ -40,5 +47,13 @@ export class ViewItemsComponent implements OnInit {
 
   onEdit() {
     console.log(JSON.stringify(this.selected));
+    this.model = JSON.parse(JSON.stringify(this.selected[0])) as Item;
+    this.modalOpened = true;
+
   }
+
+  onSubmit() {
+    this.toastr.info(JSON.stringify(this.model));
+  }
+
 }

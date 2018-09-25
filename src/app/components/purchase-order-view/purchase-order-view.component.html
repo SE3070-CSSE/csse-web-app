@@ -1,0 +1,33 @@
+<h2 class="form-header">
+    Item database
+</h2>
+<div style="text-align: center" *ngIf="!items">
+  <span style="display: inline-block" class="spinner spinner-md">
+    Loading...
+  </span>
+</div>
+
+<clr-datagrid *ngIf="items" [(clrDgSelected)]="selected" [clDgRowSelection]="true">
+
+    <clr-dg-action-bar>
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()" [disabled]="selected.length == 0">
+              <clr-icon shape="close"></clr-icon> Delete
+            </button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
+        </div>
+    </clr-dg-action-bar>
+
+  <clr-dg-column>Item ID</clr-dg-column>
+  <clr-dg-column>Item Name</clr-dg-column>
+  <clr-dg-column>Category</clr-dg-column>
+  <clr-dg-column>Price</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
+    <clr-dg-cell>{{item._id}}</clr-dg-cell>
+    <clr-dg-cell>{{item.itemName}}</clr-dg-cell>
+    <clr-dg-cell>{{item.category | uppercase }}</clr-dg-cell>
+    <clr-dg-cell>Rs. {{item.price}}</clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+</clr-datagrid>

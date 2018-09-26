@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { PurchaseOrder } from '../models/purchase-order';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { tap, catchError } from 'rxjs/operators';
 export class OrderService {
 
   private purchaseRequestURL = environment.purchaseRequestEndpoint;
+  private purchaseOrderURL = environment.purchaseOrderEndpoint;
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
@@ -35,6 +37,17 @@ export class OrderService {
         tap(approvedRequests => console.log(JSON.stringify(approvedRequests))),
         catchError(this.handleError('getApprovedPurchaseRequests', [], 'Could not get approved requests from server'))
       );
+  }
+
+  /**
+   * POST: post purchase order to server
+   * @param order The order to be saved
+   */
+  addOrder(order: PurchaseOrder): Observable<PurchaseOrder> {
+    return this.http.post<PurchaseOrder>(this.purchaseOrderURL, order, this.httpOptions).pipe(
+      tap((resultItem: any) => console.log(`added order w/ id=${resultItem._id}`)),
+      catchError(this.handleError<PurchaseOrder>('addOrder'))
+    );
   }
 
   /**

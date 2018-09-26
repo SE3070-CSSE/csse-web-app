@@ -11,7 +11,7 @@
 
 <!-- Wizard -->
 
-<clr-wizard #wizardlg [(clrWizardOpen)]="lgOpen" (clrWizardOnFinish)="doFinish()" clrWizardSize="lg">
+<clr-wizard #wizardlg [(clrWizardOpen)]="lgOpen" (clrWizardOnFinish)="doFinish()" (clrWizardOnCancel)="resetAll()" clrWizardSize="lg">
     <clr-wizard-title>Create Purchase Order</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
@@ -28,29 +28,44 @@
                         <label for="supplierSelector">Select a supplier</label>
                         <div class="select">
                             <select required id="itemSupplierSelector" name="supplierSelector" [(ngModel)]="selectedSupplier">
-                                <option *ngFor="let supplier of suppliers" [value]="supplier">{{supplier}}</option>
-                            </select>
+                                <option *ngFor="let supplier of suppliers" [ngValue]="supplier">{{supplier.supplierName}}</option>
+                             </select>
                         </div>
                     </div>
                 </section>
             </form> 
     </clr-wizard-page>
 
-    <clr-wizard-page>
+    <clr-wizard-page (clrWizardPageNext)="createTempOrder()">
         <ng-template clrPageTitle>Add Order Items</ng-template>
         <form>
             <section class="form-block">
                 <label>Select order items to include in the Purchase order</label>
             </section>
         </form> 
-        <p>Supplier : {{selectedSupplier}}</p>
+        <p>Supplier : {{selectedSupplier.supplierName}}</p>
         <dual-list [source]="dualSelectionList1" [key]="key" [display]="display" [(destination)]="confirmedItems"></dual-list>
     </clr-wizard-page>
 
     <clr-wizard-page #lastPage>
         <ng-template clrPageTitle>Confirm Order</ng-template>
-        <p>Supplier : {{selectedSupplier}}</p>
-        
+        <h4><span style="font-weight: bold">Supplier : </span>{{selectedSupplier.supplierName}}</h4>
+        <h4><span style="font-weight: bold">Order Total : </span>{{purchaseOrderModel.totalPrice}}</h4>
+        <h4><span style="font-weight: bold">Line Items</span></h4>
+        <table class="table" style="margin-top: 0.2rem;">
+                <thead>
+                    <tr>
+                        <th class="left">Item Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let orderItem of purchaseOrderModel.orderItems">
+                        <td class="left">{{orderItem.item.itemName}}</td>
+                        <td>{{orderItem.quantity}}</td>
+                    </tr>
+                </tbody>
+            </table>
     </clr-wizard-page>
 </clr-wizard>
 
@@ -89,7 +104,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let lineItem of request.requestLineItems" >
+              <tr *ngFor="let lineItem of request.requestLineItems" [hidden]="lineItem.pocreated != false">
                   <td class="left">{{lineItem.item.itemName}}</td>
                   <td>{{lineItem.quantity}}</td>
               </tr>

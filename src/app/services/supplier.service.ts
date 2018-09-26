@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of, throwError } from 'rxjs';
@@ -9,9 +9,9 @@ import { tap, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class SupplierService {
 
-  private purchaseRequestURL = environment.purchaseRequestEndpoint;
+  private supplierURL = environment.supplierEndpoint;
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
@@ -27,22 +27,16 @@ export class OrderService {
   }
 
   /**
-   *  GET: Get a list of approved purchase requests from the server. Returns the list of items upon success.
+   *  GET: Get a list of suppliers from the server. Returns the list of items upon success.
    */
-  getApprovedPurchaseRequests(): Observable<any[]> {
-    return this.http.get<any[]>(this.purchaseRequestURL + '/approved', this.httpOptions)
+  getSuppliers(): Observable<any[]> {
+    return this.http.get<any[]>(this.supplierURL, this.httpOptions)
       .pipe(
-        tap(approvedRequests => console.log(JSON.stringify(approvedRequests))),
-        catchError(this.handleError('getApprovedPurchaseRequests', [], 'Could not get approved requests from server'))
+        tap(suppliers => console.log(JSON.stringify(suppliers))),
+        catchError(this.handleError('getSuppliers', [], 'Could not get suppliers from server'))
       );
   }
 
-  /**
-   * Http error handling method
-   * @param operation Name of the operation
-   * @param result result to be passed in response(optional)
-   * @param message message to be shown on error(optional) only works if result is passed
-   */
   private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {
 
@@ -60,4 +54,3 @@ export class OrderService {
     };
   }
 }
-

@@ -17,13 +17,13 @@
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
     <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
     <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'" (wasClicked)="wizardFinished()">Finish</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
     <clr-wizard-page [clrWizardPageNextDisabled]="!formPage.valid">
         <ng-template clrPageTitle>Select Supplier</ng-template>
             <form #formPage="ngForm">
                 <section class="form-block">
-                    <label>To proceed, First select a supplier...</label>
+                    <label style="margin-top: 2rem">To proceed, First select a supplier from the dropdown list</label>
                     <div class="form-group">
                         <label for="supplierSelector">Select a supplier</label>
                         <div class="select">
@@ -81,7 +81,7 @@
   <clr-dg-cell>{{request.createdOn}}</clr-dg-cell>
 
   <clr-dg-row-detail *clrIfExpanded>
-      <table class="table table-compact">
+      <table class="table table-compact" style="margin-left: -7%;">
           <thead>
               <tr>
                   <th class="left">Line Item</th>

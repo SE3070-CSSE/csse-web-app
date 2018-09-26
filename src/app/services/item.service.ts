@@ -16,10 +16,6 @@ export class ItemService {
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
-  /**
-   * @param authService is used to access the JWT token provided by the backend server during login.
-   * The token is used to authorize all requests to the backend
-   */
   constructor(public authService: AuthService, private http: HttpClient, private toastr: ToastrService) {
     console.log('Inside item service');
     this.headers = this.headers.append('Content-Type', 'application/json');
@@ -38,10 +34,7 @@ export class ItemService {
       );
   }
 
-  /**
-   *  POST: Add item to database. Returns the added item upon success.
-   * @param item The Item to add
-   */
+
   addItem(item: Item): Observable<Item> {
     return this.http.post<Item>(this.itemUrl, item, this.httpOptions).pipe(
       tap((resultItem: any) => console.log(`added item w/ id=${resultItem._id}`)),
@@ -49,10 +42,6 @@ export class ItemService {
     );
   }
 
-  /**
-   *  PUT: update the item on the server. Returns the updated item upon success.
-   * @param item item to be updated
-   */
   updateItem(item: Item): Observable<Item> {
     return this.http.put<Item>(this.itemUrl, item, this.httpOptions)
       .pipe(
@@ -60,10 +49,6 @@ export class ItemService {
       );
   }
 
-  /**
-   * DELETE: delete a set of items
-   * @param items contains a list of items to delete
-   */
   deleteItems(items: Item[]): Observable<any> {
     return this.http.request('delete', this.itemUrl, { headers: this.headers, body: items }).pipe(
       tap((resultItem: any) => console.log('deleted items')),
@@ -71,12 +56,6 @@ export class ItemService {
     );
   }
 
-  /**
-   * Http error handling method
-   * @param operation Name of the operation
-   * @param result result to be passed in response(optional)
-   * @param message message to be shown on error(optional) only works if result is passed
-   */
   private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {
 

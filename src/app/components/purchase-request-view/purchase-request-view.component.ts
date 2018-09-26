@@ -39,8 +39,21 @@ export class PurchaseRequestViewComponent implements OnInit {
   }
 
   onApprove() {
+    let approvedRequests: any[] = [];
     console.log('onApprove');
-    console.log(JSON.stringify(this.selected));
+    // console.log(JSON.stringify(this.selected));
+    this.selected.forEach(elem => {
+      let request = JSON.parse(JSON.stringify(elem));
+      request.requestStatus = 'APPROVED';
+      console.log(request);
+      approvedRequests.push(request);
+    });
+
+    this.purchaseRequestService.approvePurchaseRequest(approvedRequests).subscribe(response => {
+      console.log(response);
+      this.getRequests();
+    });
+
   }
 
 }

@@ -15,7 +15,7 @@ export class ViewItemsComponent implements OnInit {
   modalOpened;
   categories = ['BEAMS', 'NAILS',
     'WINDOWS', 'PLANKS'];
-  model = new Item(null, null, null, null, '-');
+  model = new Item(null, null, null, null, null, '-');
 
   constructor(private toastr: ToastrService, private itemService: ItemService) { }
 

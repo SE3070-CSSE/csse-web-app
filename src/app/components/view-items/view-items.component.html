@@ -81,13 +81,13 @@
         </div>
     </clr-dg-action-bar>
 
-  <clr-dg-column>Item ID</clr-dg-column>
+  <clr-dg-column class="width1">Item ID</clr-dg-column>
   <clr-dg-column>Item Name</clr-dg-column>
   <clr-dg-column>Category</clr-dg-column>
   <clr-dg-column>Price</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
-    <clr-dg-cell>{{item._id}}</clr-dg-cell>
+    <clr-dg-cell class="width1">{{item._id}}</clr-dg-cell>
     <clr-dg-cell>{{item.itemName}}</clr-dg-cell>
     <clr-dg-cell>{{item.category | uppercase }}</clr-dg-cell>
     <clr-dg-cell>Rs. {{item.price}}</clr-dg-cell>

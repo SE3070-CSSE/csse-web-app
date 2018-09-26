@@ -17,7 +17,7 @@ export class PurchaseRequestService {
   private httpOptions = {};
 
   constructor(public authService: AuthService, private http: HttpClient, private toastr: ToastrService) {
-    console.log('Inside item service');
+    console.log('Inside request service');
     this.headers = this.headers.append('Content-Type', 'application/json');
     this.headers = this.headers.append('Authorization', authService.JWTtoken);
     this.httpOptions = { headers: this.headers };
@@ -32,6 +32,13 @@ export class PurchaseRequestService {
         tap(requests => console.log(JSON.stringify(requests))),
         catchError(this.handleError('getPurchaseRequests', [], 'Could not get purchase requests from server'))
       );
+  }
+
+  deleteRequests(requests: Item[]): Observable<any> {
+    return this.http.request('delete', this.purchaseRequestURL, { headers: this.headers, body: requests }).pipe(
+      tap((resultItem: any) => console.log('deleted items')),
+      catchError(this.handleError<Item>('deleteItems'))
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T, message?: string) {

@@ -21,7 +21,6 @@ export class ViewItemsComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
-
   }
 
   getItems(): void {

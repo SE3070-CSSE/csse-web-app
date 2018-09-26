@@ -4,7 +4,6 @@ import { PurchaseOrder } from './purchase-order';
 export class PurchaseRequest {
 
     constructor(
-        public price: number,
         public purchaseOrders: PurchaseOrder[],
         public requestStatus: string,
         public requestedBy: string,

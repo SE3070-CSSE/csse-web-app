@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PurchaseRequestService } from '../../services/purchase-request.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-purchase-request-view',
@@ -6,10 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./purchase-request-view.component.css']
 })
 export class PurchaseRequestViewComponent implements OnInit {
+  requests: any[];
+  selected: string[] = [];
 
-  constructor() { }
+  constructor(private toastr: ToastrService, private purchaseRequestService: PurchaseRequestService) { }
 
   ngOnInit() {
+    this.getRequests();
+  }
+
+  getRequests(): void {
+    this.purchaseRequestService.getPurchaseRequests()
+      .subscribe(requests => {
+        this.requests = requests;
+        console.log('this.requests' + JSON.stringify(this.requests));
+      });
+  }
+
+  onDelete() {
+    console.log('delete requests : ' + JSON.stringify(this.selected));
+    // this.purchaseRequestService.deleteRequests(JSON.parse(JSON.stringify(this.selected)))
+    //   .subscribe(
+    //     any => {
+    //       console.log('deleted items' + this.selected);
+    //       this.toastr.success('deleted items');
+    //       this.getRequests();
+    //     },
+    //     err => this.toastr.error(err)
+    //   );
+  }
+
+  onApprove() {
+    console.log('onApprove');
+    console.log(JSON.stringify(this.selected));
   }
 
 }

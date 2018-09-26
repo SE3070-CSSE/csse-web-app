@@ -1,9 +1,9 @@
 export class RequestItem {
 
     constructor(
-        public itemName: string,
+        public item: any,
         public quantity: number,
-        public POCreated: boolean
+        public pocreated: boolean
       ) {  }
 
 }

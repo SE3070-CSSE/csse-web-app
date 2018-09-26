@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { UiModule } from './components/ui/ui.module';
+import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
@@ -34,6 +35,7 @@ import { PurchaseOrderViewComponent } from './components/purchase-order-view/pur
   imports: [
     HttpClientModule,
     BrowserAnimationsModule,
+    AngularDualListBoxModule,
     ToastrModule.forRoot(),
     BrowserModule,
     FormsModule,

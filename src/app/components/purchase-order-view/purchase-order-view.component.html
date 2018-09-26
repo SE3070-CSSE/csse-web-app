@@ -4,78 +4,66 @@
 <!-- Loading spinner -->
 <div style="text-align: center" *ngIf="!approvedRequests">
 <span style="display: inline-block" class="spinner spinner-md">
-  Loading...
+  Loading...    
 </span>
 </div>
 <!-- End Loading spinner -->
 
-<!-- Edit Modal -->
-<!-- <clr-modal [(clrModalOpen)]="modalOpened">
-    <h3 class="modal-title">Create Purchase Order</h3>
-    <div class="modal-body">
-        <form #itemForm="ngForm" (ngSubmit)="onSubmitEdited()" class="clr-form clr-form-horizontal">
-            <section class="form-block">
-                <div class="form-group">
-                    <label for="itemname">Item Name</label>
-                    <label for="itemname"
-                        aria-haspopup="true"
-                        role="tooltip"
-                        class="tooltip tooltip-validation tooltip-md"
-                        [class.invalid]="itemNameInput.invalid && (itemNameInput.dirty || itemNameInput.touched)">
-                        <input type="text" id="itemname" placeholder="Enter item name"
-                            required
-                            name="itemName"
-                            [(ngModel)]="model.purchaseRequest"
-                            #itemNameInput="ngModel">
-                        <span class="tooltip-content">
-                            Item Name is Required.
-                        </span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="price">Price</label>
-                    <label for="price"
-                        aria-haspopup="true"
-                        role="tooltip"
-                        class="tooltip tooltip-validation tooltip-md"
-                        [class.invalid]="itemPriceInput.invalid && (itemPriceInput.dirty || itemPriceInput.touched)">
-                        <input type="text" id="price" placeholder="Enter item price"
-                            required
-                            pattern="^[0-9]*$"
-                            name="price"
-                            (keydown)="validateNumberKeyPress()"
-                            [(ngModel)]="model.price"
-                            #itemPriceInput="ngModel">  
-                        <span class="tooltip-content" *ngIf="itemPriceInput.hasError('required')">
-                            Item Price is Required and must be a number
-                        </span>
-                    </label>
-                </div>
-                <div class="form-group">    
-                    <label for="itemCategory">Category</label>
-                    <div class="select">
-                        <select id="itemCategory" name="category" [(ngModel)]="model.category">
-                            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-                        </select>
+<!-- Wizard -->
+
+<clr-wizard #wizardlg [(clrWizardOpen)]="lgOpen" (clrWizardOnFinish)="doFinish()" clrWizardSize="lg">
+    <clr-wizard-title>Create Purchase Order</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'" (wasClicked)="wizardFinished()">Finish</clr-wizard-button>
+
+    <clr-wizard-page [clrWizardPageNextDisabled]="!formPage.valid">
+        <ng-template clrPageTitle>Select Supplier</ng-template>
+            <form #formPage="ngForm">
+                <section class="form-block">
+                    <label>To proceed, First select a supplier...</label>
+                    <div class="form-group">
+                        <label for="supplierSelector">Select a supplier</label>
+                        <div class="select">
+                            <select required id="itemSupplierSelector" name="supplierSelector" [(ngModel)]="selectedSupplier">
+                                <option *ngFor="let supplier of suppliers" [value]="supplier">{{supplier}}</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline" (click)="modalOpened = false">Cancel</button>
-                    <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Submit</button>
-                </div>
+                </section>
+            </form> 
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Add Order Items</ng-template>
+        <form>
+            <section class="form-block">
+                <label>Select order items to include in the Purchase order</label>
             </section>
-        </form>
-    </div>
-</clr-modal> -->
-<!-- End Modal -->
+        </form> 
+        <p>Supplier : {{selectedSupplier}}</p>
+        <dual-list [source]="dualSelectionList1" [key]="key" [display]="display" [(destination)]="confirmedItems"></dual-list>
+    </clr-wizard-page>
+
+    <clr-wizard-page #lastPage>
+        <ng-template clrPageTitle>Confirm Order</ng-template>
+        <p>Supplier : {{selectedSupplier}}</p>
+        
+    </clr-wizard-page>
+</clr-wizard>
+
+
+<!-- End Wizard -->
 
 <!-- Datagrid -->
 
-<clr-datagrid *ngIf="approvedRequests" [(clrDgSingleSelected)]="selected" [clDgRowSelection]="true">
+<clr-datagrid *ngIf="approvedRequests" [(clrDgSingleSelected)]="selectedRequest" [clDgRowSelection]="true">
 
   <clr-dg-action-bar>
       <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-secondary" (click)="createOrder()" [disabled]="!selected">
+          <button type="button" class="btn btn-sm btn-secondary" (click)="openOrderWizard()" [disabled]="!selectedRequest">
             <clr-icon shape="checkbox-list"></clr-icon> Create Order
           </button>
       </div>
@@ -101,9 +89,9 @@
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let item of request.requestLineItems" >
-                  <td class="left">{{item.itemName}}</td>
-                  <td>{{item.quantity}}</td>
+              <tr *ngFor="let lineItem of request.requestLineItems" >
+                  <td class="left">{{lineItem.item.itemName}}</td>
+                  <td>{{lineItem.quantity}}</td>
               </tr>
           </tbody>
       </table>

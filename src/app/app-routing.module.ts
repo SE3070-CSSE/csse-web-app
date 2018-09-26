@@ -11,6 +11,7 @@ import { SupplierAddComponent } from './components/supplier-add/supplier-add.com
 import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
 import { FormsModule } from '@angular/forms';
 import { PurchaseRequestViewComponent } from './components/purchase-request-view/purchase-request-view.component';
+import { PurchaseOrderViewComponent } from './components/purchase-order-view/purchase-order-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -39,6 +40,13 @@ const routes: Routes = [
         path: 'requests',
         children: [
           { path: 'view', component: PurchaseRequestViewComponent },
+          { path: 'add', component: SupplierViewComponent }
+        ]
+      },
+      {
+        path: 'orders',
+        children: [
+          { path: 'viewapproved', component: PurchaseOrderViewComponent },
           { path: 'add', component: SupplierViewComponent }
         ]
       }

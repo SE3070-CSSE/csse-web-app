@@ -16,6 +16,7 @@ import { SupplierAddComponent } from './components/supplier-add/supplier-add.com
 import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
 import { FormsModule } from '@angular/forms';
 import { PurchaseRequestViewComponent } from './components/purchase-request-view/purchase-request-view.component';
+import { PurchaseOrderViewComponent } from './components/purchase-order-view/purchase-order-view.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PurchaseRequestViewComponent } from './components/purchase-request-view
     ViewItemsComponent,
     SupplierAddComponent,
     SupplierViewComponent,
-    PurchaseRequestViewComponent
+    PurchaseRequestViewComponent,
+    PurchaseOrderViewComponent
   ],
   imports: [
     HttpClientModule,

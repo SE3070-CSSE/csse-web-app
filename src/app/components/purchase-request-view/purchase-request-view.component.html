@@ -44,8 +44,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of request.requestLineItems" >
-                    <td class="left">{{item.itemName}}</td>
-                    <td>{{item.quantity}}</td>
+                    <td class="left">{{item.item.itemName}}</td>
+                  <td>{{item.quantity}}</td>
                 </tr>
             </tbody>
         </table>

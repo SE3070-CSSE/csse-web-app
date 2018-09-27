@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { PurchaseRequestViewComponent } from './components/purchase-request-view/purchase-request-view.component';
 import { PurchaseOrderViewComponent } from './components/purchase-order-view/purchase-order-view.component';
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PurchaseOrderCreateComponent } from './components/purchase-order-create
     SupplierViewComponent,
     PurchaseRequestViewComponent,
     PurchaseOrderViewComponent,
-    PurchaseOrderCreateComponent
+    PurchaseOrderCreateComponent,
+    UserAccountComponent
   ],
   imports: [
     HttpClientModule,

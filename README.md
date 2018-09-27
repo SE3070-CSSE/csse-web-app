@@ -3,6 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
 For Angular docs and tutorials see the [Angular reference](https://angular.io/)
 
+The app is hosted on github pages, The following this link --> [csse-web-app](https://se3070-csse.github.io/csse-web-app/login) <-- to visit the login page
+
 ## Development
 
 ### Installation of dependencies

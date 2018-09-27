@@ -20,6 +20,21 @@
                         <li><a class="nav-link" routerLink="/home/suppliers/add"  routerLinkActive="active">Add New Supplier</a></li>
                     </ul>
                 </section>
+                <section class="nav-group collapsible">
+                    <input id="requestTitle" type="checkbox">
+                    <label for="requestTitle">Purchase Requests</label>
+                    <ul class="nav-list">
+                        <li><a class="nav-link" routerLink="/home/requests/view"  routerLinkActive="active">View Requests</a></li>
+                    </ul>
+                </section>
+                <section class="nav-group collapsible">
+                    <input id="purchaseTitle" type="checkbox">
+                    <label for="purchaseTitle">Purchase Orders</label>
+                    <ul class="nav-list">
+                        <li><a class="nav-link" routerLink="/home/orders/create"  routerLinkActive="active">Create PurchaseOrders</a></li>  
+                        <li><a class="nav-link" routerLink="/home/orders/view"  routerLinkActive="active">View PurchaseOrders</a></li>
+                    </ul>
+                </section>
             </section>
         </nav>
     </div>

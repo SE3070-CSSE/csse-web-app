@@ -24,6 +24,7 @@
     "@clr/icons": "^0.13.1-patch.1",
     "@clr/ui": "^0.13.1-patch.1",
     "@webcomponents/custom-elements": "^1.0.0",
+    "angular-dual-listbox": "^4.7.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "ngx-toastr": "^9.1.0",

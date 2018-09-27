@@ -14,14 +14,13 @@ export class ViewItemsComponent implements OnInit {
   selectedForEdit;
   modalOpened;
   categories = ['BEAMS', 'NAILS',
-  'WINDOWS', 'PLANKS'];
-  model = new Item(null, null, null, null, '-');
+    'WINDOWS', 'PLANKS'];
+  model = new Item(null, null, null, null, null, '-');
 
   constructor(private toastr: ToastrService, private itemService: ItemService) { }
 
   ngOnInit() {
     this.getItems();
-
   }
 
   getItems(): void {
@@ -41,7 +40,7 @@ export class ViewItemsComponent implements OnInit {
           this.toastr.success('deleted items');
           this.getItems();
         },
-        err  => this.toastr.error(err)
+        err => this.toastr.error(err)
       );
   }
 
@@ -52,8 +51,39 @@ export class ViewItemsComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    this.toastr.info(JSON.stringify(this.model));
+  onSubmitEdited() {
+    console.log(this.model);
+    this.itemService.updateItem(this.model)
+      .subscribe(
+        any => {
+          console.log('updated item' + JSON.stringify(this.model));
+          this.toastr.success('Item updated successfully');
+          this.getItems();
+        },
+        err => this.toastr.error(err)
+      );
+    this.modalOpened = false;
+  }
+
+  validateNumberKeyPress(evt) {
+    const keyEvent = evt || window.event;
+    let key;
+    const regex = /[0-9]|\./;
+
+    // get keycode as string
+    key = keyEvent.keyCode || keyEvent.which;
+    key = String.fromCharCode(key);
+
+    // allow backspace, delete, left and right
+    if (keyEvent.keyCode === 8 || keyEvent.keyCode === 46 || keyEvent.keyCode === 37 || keyEvent.keyCode === 39) {
+      return true;
+    }
+    if (!regex.test(key)) {
+      keyEvent.returnValue = false;
+      if (keyEvent.preventDefault) {
+        keyEvent.preventDefault();
+      }
+    }
   }
 
 }

@@ -5,6 +5,12 @@ For Angular docs and tutorials see the [Angular reference](https://angular.io/)
 
 ## Development
 
+### Installation of dependencies
+
+- Run `npm install -g npm` to update npm version
+- Run `npm install -g @angular/cli` to get the angular command line tools
+- Run `npm install` to install all dependencies in package.json
+
 ### Running the Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

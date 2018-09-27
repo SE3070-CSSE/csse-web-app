@@ -16,10 +16,6 @@ export class ItemService {
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
-  /**
-   * @param authService is used to access the JWT token provided by the backend server during login.
-   * The token is used to authorize all requests to the backend
-   */
   constructor(public authService: AuthService, private http: HttpClient, private toastr: ToastrService) {
     console.log('Inside item service');
     this.headers = this.headers.append('Content-Type', 'application/json');
@@ -27,6 +23,9 @@ export class ItemService {
     this.httpOptions = { headers: this.headers };
   }
 
+  /**
+   *  GET: Get a list of items from the server. Returns the list of items upon success.
+   */
   getItems(): Observable<any[]> {
     return this.http.get<any[]>(this.itemUrl, this.httpOptions)
       .pipe(
@@ -35,14 +34,22 @@ export class ItemService {
       );
   }
 
-  addItem (item: Item): Observable<Item> {
+
+  addItem(item: Item): Observable<Item> {
     return this.http.post<Item>(this.itemUrl, item, this.httpOptions).pipe(
       tap((resultItem: any) => console.log(`added item w/ id=${resultItem._id}`)),
       catchError(this.handleError<Item>('addItem'))
     );
   }
 
-  deleteItems (items: Item[]): Observable<any> {
+  updateItem(item: Item): Observable<Item> {
+    return this.http.put<Item>(this.itemUrl, item, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Item>('updateItem'))
+      );
+  }
+
+  deleteItems(items: Item[]): Observable<any> {
     return this.http.request('delete', this.itemUrl, { headers: this.headers, body: items }).pipe(
       tap((resultItem: any) => console.log('deleted items')),
       catchError(this.handleError<Item>('deleteItems'))

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   itemEndpoint: 'https://csse-backend.herokuapp.com/items',
+  supplierEndpoint: 'https://csse-backend.herokuapp.com/suppliers',
   loginUrl: 'https://csse-backend.herokuapp.com/login'
 };
 

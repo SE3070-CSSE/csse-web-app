@@ -2,20 +2,20 @@
 <h2 class="form-header">
   Add a supplier
 </h2>
-<form #itemForm="ngForm" (ngSubmit)="onSubmit()" class="clr-form clr-form-horizontal">
+<form #supplierForm="ngForm" (ngSubmit)="onSubmit()" class="clr-form clr-form-horizontal">
   <section class="form-block">
       <div class="form-group">
-          <label for="suppliername">Supplier Name</label>
-          <label for="suppliername"
+          <label for="supplierName">Supplier Name</label>
+          <label for="supplierName"
               aria-haspopup="true"
               role="tooltip"
               class="tooltip tooltip-validation tooltip-md"
               [class.invalid]="supplierNameInput.invalid && (supplierNameInput.dirty || supplierNameInput.touched)">
-              <input type="text" id="suppliername" placeholder="Enter supplier name"
+              <input type="text" id="supplierName" placeholder="Enter supplier name"
                   required
                   name="suppliername"
                   [(ngModel)]="model.supplierName"
-                  #itemNameInput="ngModel">
+                  #supplierNameInput="ngModel">
               <span class="tooltip-content">
                   Supplier Name is Required.
               </span>
@@ -30,11 +30,9 @@
               [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
               <input type="text" id="price" placeholder="Enter email"
                   required
-                  pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
                   name="email"
-                  (keydown)="validateNumberKeyPress()"
                   [(ngModel)]="model.email"
-                  #itemPriceInput="ngModel">  
+                  #emailInput="ngModel">  
               <span class="tooltip-content" *ngIf="emailInput.hasError('required')">
                 Invalid email
               </span>
@@ -44,16 +42,15 @@
           <label for="contactNumber">Contact number</label>
             <input type="text" id="price" placeholder="Enter contact number"
             name="contactNumber"
-            (keydown)="validateNumberKeyPress()"
+            required
             [(ngModel)]="model.contactNumber">
       </div>
       <div class="form-group">    
         <label for="address">Address</label>
           <input type="text" id="address" placeholder="Enter address"
           name="address"
-          (keydown)="validateNumberKeyPress()"
           [(ngModel)]="model.address">
     </div>
-      <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="!supplierForm.form.valid">Submit</button>
   </section>
 </form>

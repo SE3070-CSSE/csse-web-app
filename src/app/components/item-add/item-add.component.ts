@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Item } from '../../models/item';
 import { ItemService } from '../../services/item.service';
+import { SupplierService } from '../../services/supplier.service';
+import { Supplier } from '../../models/supplier';
 
 @Component({
   selector: 'app-item-add',
@@ -13,9 +15,24 @@ export class ItemAddComponent implements OnInit {
   categories = ['BEAMS', 'NAILS',
     'WINDOWS', 'PLANKS'];
 
-  model = new Item(null, null, null, null, '-');
+  suppliers: Supplier[] = [];
+
+  model = new Item(null, null, null, null, null, '-');
 
   // submitted = false;
+  constructor(private toastr: ToastrService, private itemService: ItemService, private supplierService: SupplierService) { }
+
+  ngOnInit() {
+    this.getSuppliers();
+  }
+
+  getSuppliers(): void {
+    this.supplierService.getSuppliers()
+      .subscribe(suppliers => {
+        this.suppliers = suppliers;
+        console.log('this.suppliers' + this.suppliers);
+      });
+  }
 
   onSubmit() {
     console.log('submit clicked');
@@ -45,11 +62,6 @@ export class ItemAddComponent implements OnInit {
         keyEvent.preventDefault();
       }
     }
-  }
-
-  constructor(private toastr: ToastrService, private itemService: ItemService) { }
-
-  ngOnInit() {
   }
 
 }

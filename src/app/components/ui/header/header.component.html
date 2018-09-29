@@ -13,5 +13,16 @@
         <a href="javascript://" class="nav-link nav-icon">
             <clr-icon shape="cog"></clr-icon>
         </a>
+        <clr-dropdown [hidden]="!authService.isLoggedIn">
+            <button class="nav-icon" clrDropdownTrigger>
+                <clr-icon shape="user"></clr-icon>
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                <a routerLink="/home/users/account" clrDropdownItem>Account</a>
+                <a routerLink="/home" clrDropdownItem>Link 2</a>
+                <a routerLink="/login" (click)="authService.logout()" clrDropdownItem>Log out</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
     </div>
 </header>

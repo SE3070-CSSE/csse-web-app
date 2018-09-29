@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { PurchaseRequestViewComponent } from './components/purchase-request-view/purchase-request-view.component';
 import { PurchaseOrderViewComponent } from './components/purchase-order-view/purchase-order-view.component';
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -48,6 +49,12 @@ const routes: Routes = [
         children: [
           { path: 'create', component: PurchaseOrderCreateComponent },
           { path: 'view', component: PurchaseOrderViewComponent }
+        ]
+      },
+      {
+        path: 'users',
+        children: [
+          { path: 'account', component: UserAccountComponent }
         ]
       }
     ]

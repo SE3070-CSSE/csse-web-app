@@ -43,6 +43,13 @@ import { AuthService } from './auth.service';
     );
   }
 
+  updateSupplier(supplier: Supplier): Observable<Supplier> {
+    return this.http.put<Supplier>(this.supplierUrl, supplier, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Supplier>('update Supplier'))
+      );
+  }
+
   deleteSuppliers (suppliers: Supplier[]): Observable<any> {
     return this.http.request('delete', this.supplierUrl, { headers: this.headers, body: suppliers }).pipe(
       tap((resultItem: any) => console.log('deleted suppliers')),

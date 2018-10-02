@@ -12,6 +12,7 @@ describe('SupplierAddComponent', () => {
     })
     .compileComponents();
   }));
+  
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SupplierAddComponent);

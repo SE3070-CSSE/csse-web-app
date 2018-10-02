@@ -36,7 +36,7 @@ export class SupplierViewComponent implements OnInit {
       .subscribe(
         any => {
           console.log('deleted suppliers' + this.selected);
-          this.toastr.success('deleted suppliers');
+          this.toastr.success('Successfully deleted');
           this.getSuppliers();
         },
         err  => this.toastr.error(err)
@@ -50,6 +50,19 @@ export class SupplierViewComponent implements OnInit {
 
   }
 
+  onSubmitEdited() {
+    console.log(this.model);
+    this.SupplierService.updateSupplier(this.model)
+      .subscribe(
+        any => {
+          console.log('updated supplier' + JSON.stringify(this.model));
+          this.toastr.success('Supplier updated successfully');
+          this.getSuppliers();
+        },
+        err => this.toastr.error(err)
+      );
+    this.modalOpened = false;
+  }
   
   onSubmit() {
     this.toastr.info(JSON.stringify(this.model));

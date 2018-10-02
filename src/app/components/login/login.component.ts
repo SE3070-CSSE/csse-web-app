@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 
 @Component({
-  templateUrl: './login.component.html',
+  selector:'app-login',
+  templateUrl: './login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent{
 
+ 
   // TODO: replace this with a data binding to a form so that uname + password can be set
   user: any = {
     username: 'saman',

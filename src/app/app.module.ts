@@ -20,6 +20,8 @@ import { PurchaseRequestViewComponent } from './components/purchase-request-view
 import { PurchaseOrderViewComponent } from './components/purchase-order-view/purchase-order-view.component';
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
+//import { LoginComponent } from './components/login/login.component'
+import { ViewUsersComponent } from './components/users-view/users-view.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     PurchaseRequestViewComponent,
     PurchaseOrderViewComponent,
     PurchaseOrderCreateComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    ViewUsersComponent
   ],
   imports: [
     HttpClientModule,

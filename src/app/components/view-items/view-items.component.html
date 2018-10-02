@@ -43,7 +43,7 @@
                             required
                             pattern="^[0-9]*$"
                             name="price"
-                            (keydown)="validateNumberKeyPress($event)"
+                            (keydown)="validateNumberKeyPress()"
                             [(ngModel)]="model.price"
                             #itemPriceInput="ngModel">  
                         <span class="tooltip-content" *ngIf="itemPriceInput.hasError('required')">

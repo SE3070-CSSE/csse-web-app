@@ -14,6 +14,7 @@ import { PurchaseRequestViewComponent } from './components/purchase-request-view
 import { PurchaseOrderViewComponent } from './components/purchase-order-view/purchase-order-view.component';
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
+import { ViewUsersComponent } from './components/users-view/users-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -52,9 +53,10 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'users',
+        path: 'account',
         children: [
-          { path: 'account', component: UserAccountComponent }
+          { path: 'profile', component: UserAccountComponent },
+          { path: 'view', component: ViewUsersComponent}
         ]
       }
     ]
@@ -62,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
     AuthGuardService,

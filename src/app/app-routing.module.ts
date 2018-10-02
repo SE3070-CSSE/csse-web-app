@@ -15,9 +15,11 @@ import { PurchaseOrderViewComponent } from './components/purchase-order-view/pur
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { ViewUsersComponent } from './components/users-view/users-view.component';
+// import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: 'register', redirectTo: '/login', component: RegisterComponent},
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   {

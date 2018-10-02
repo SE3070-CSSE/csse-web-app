@@ -12,7 +12,9 @@ import { AuthService } from './auth.service';
 })
 export class UserService {
 
-  private userUrl = environment.userUrl;
+  private listUrl = environment.listUrl;
+  private updateUrl = environment.updateUrl;
+  private deleteUrl = environment.deleteUrl;
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
@@ -27,7 +29,7 @@ export class UserService {
    *  GET: Get a list of users from the server. Returns the list of users upon success.
    */
   getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.userUrl, this.httpOptions)
+    return this.http.get<any[]>(this.listUrl, this.httpOptions)
       .pipe(
         tap(users => console.log(JSON.stringify(users))),
         catchError(this.handleError('getUsers', [], 'Could not get users from server'))
@@ -43,14 +45,14 @@ export class UserService {
   // }
 
   updateUser(user: ApplicationUser): Observable<ApplicationUser> {
-    return this.http.put<ApplicationUser>(this.userUrl, user, this.httpOptions)
+    return this.http.put<ApplicationUser>(this.updateUrl, user, this.httpOptions)
       .pipe(
         catchError(this.handleError<ApplicationUser>('updateUser'))
       );
   }
 
   deleteUser(users: ApplicationUser[]): Observable<any> {
-    return this.http.request('delete', this.userUrl, { headers: this.headers, body: users }).pipe(
+    return this.http.request('delete', this.deleteUrl, { headers: this.headers, body: users }).pipe(
       tap((resultItem: any) => console.log('deleted users')),
       catchError(this.handleError<ApplicationUser>('deleteUsers'))
     );

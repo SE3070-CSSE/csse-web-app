@@ -11,7 +11,9 @@ export const environment = {
   approvePurchaseRequestsEndpoint: 'https://csse-backend.herokuapp.com/requests/approve',
   loginUrl: 'https://csse-backend.herokuapp.com/login',
   registerUrl: 'https://csse-backend.herokuapp.com/users/signup',
-  userUrl: 'https://csse-backend.herokuapp.com/users'
+  listUrl: 'https://procurement-system.herokuapp.com/users/list',
+  updateUrl: 'https://procurement-system.herokuapp.com/users/update',
+  deleteUrl: 'https://procurement-system.herokuapp.com/users/deactivate'
 };
 
 /*

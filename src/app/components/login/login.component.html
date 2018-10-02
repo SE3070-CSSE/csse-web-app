@@ -5,7 +5,7 @@
       <p>
         <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
         <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-      </p>
+        <a [routerLink]="['/register']" class="btn btn-link">Register</a>
   </main>
 </div>
 
@@ -50,4 +50,4 @@
 
     </form>
 
-</div> --> -->
+</div> --> 

@@ -20,13 +20,13 @@ import { ViewUsersComponent } from './components/users-view/users-view.component
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { 
+  {
     path: 'register', component: UserComponent,
-    children: [{path: '', component: RegisterComponent}]
+    children: [{ path: '', component: RegisterComponent }]
   },
-  { 
+  {
     path: 'login', component: UserComponent,
-    children:[{ path: '', component: LoginComponent}]
+    children: [{ path: '', component: LoginComponent }]
   },
   { path: 'about', component: AboutComponent },
   {
@@ -65,7 +65,7 @@ const routes: Routes = [
         path: 'account',
         children: [
           { path: 'profile', component: UserAccountComponent },
-          { path: 'view', component: ViewUsersComponent}
+          { path: 'view', component: ViewUsersComponent }
         ]
       }
     ]

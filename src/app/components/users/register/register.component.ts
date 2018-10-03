@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr'
+import { ToastrService } from 'ngx-toastr';
 import { ApplicationUser } from '../../../models/ApplicationUser';
 import { UserService } from '../../../services/user.service';
 
@@ -11,7 +11,7 @@ import { UserService } from '../../../services/user.service';
 })
 export class RegisterComponent implements OnInit {
   user: ApplicationUser;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
   constructor(private userService: UserService, private toastr: ToastrService) { }
 
@@ -20,8 +20,9 @@ export class RegisterComponent implements OnInit {
   }
 
   resetForm(form?: NgForm) {
-    if (form != null)
+    if (form != null) {
       form.reset();
+    }
     this.user = {
       username: '',
       password: '',
@@ -32,19 +33,18 @@ export class RegisterComponent implements OnInit {
       emp_ID: '',
       phone: '',
       emp_type: ''
-
-    }
+    };
   }
 
   OnSubmit(form: NgForm) {
     this.userService.registerUser(form.value)
       .subscribe((data: any) => {
-        if (data.Succeeded == true) {
+        if (data.Succeeded === true) {
           this.resetForm(form);
           this.toastr.success('User registration successful');
-        }
-        else
+        } else {
           this.toastr.error(data.Errors[0]);
+        }
       });
   }
 

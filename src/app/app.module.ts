@@ -26,6 +26,7 @@ import { RegisterComponent } from './components/users/register/register.componen
 
 @NgModule({
   declarations: [
+    UserComponent,
     AppComponent,
     AboutComponent,
     HomeComponent,

@@ -2,7 +2,7 @@
 
 export class ApplicationUser {
 
-    constructor(
+  constructor(
 
     public emp_ID: string,
     public emp_type: string,
@@ -11,7 +11,7 @@ export class ApplicationUser {
     public address: string,
     public email: string,
     public phone: string,
-    public username : string,
+    public username: string,
     public password: string
-      ) {  }
+  ) { }
 }

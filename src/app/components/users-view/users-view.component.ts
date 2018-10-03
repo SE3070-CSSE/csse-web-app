@@ -9,11 +9,11 @@ import { ApplicationUser } from '../../models/ApplicationUser';
   styleUrls: ['./users-view.component.css']
 })
 export class ViewUsersComponent implements OnInit {
-  ApplicationUsers: any[];
+  applicationUsers: any[];
   selected: string[] = [];
   selectedForEdit;
   modalOpened;
-  
+
   model = new ApplicationUser(null, null, null, null, null, null, null, null, null);
 
   constructor(private toastr: ToastrService, private userService: UserService) { }
@@ -24,9 +24,9 @@ export class ViewUsersComponent implements OnInit {
 
   getUsers(): void {
     this.userService.getUsers()
-      .subscribe(ApplicationUsers => {
-        this.ApplicationUsers = ApplicationUsers;
-        console.log('this.ApplicationUsers' + this.ApplicationUsers);
+      .subscribe(applicationUsers => {
+        this.applicationUsers = applicationUsers;
+        console.log('this.applicationUsers' + this.applicationUsers);
       });
   }
 

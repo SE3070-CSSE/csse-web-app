@@ -121,7 +121,7 @@
 <!-- End Modal -->
 
 <!-- Datagrid -->
-<clr-datagrid *ngIf="users" [(clrDgSelected)]="selected" [clDgRowSelection]="true">
+<clr-datagrid *ngIf="applicationUsers" [(clrDgSelected)]="selected" [clDgRowSelection]="true">
 
     <clr-dg-action-bar>
         <div class="btn-group">
@@ -143,7 +143,7 @@
   <clr-dg-column>Created Date</clr-dg-column>
   <clr-dg-column>Modified Date</clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+  <clr-dg-row *clrDgItems="let user of applicationUsers" [clrDgItem]="user">
     <clr-dg-cell class="width1">{{user.emp_ID}}</clr-dg-cell>
     <clr-dg-cell>{{user.username}}</clr-dg-cell>
     <clr-dg-cell>{{user.emp_type}}</clr-dg-cell>
@@ -154,6 +154,6 @@
     <clr-dg-cell>{{user.createdDate}}</clr-dg-cell>
     <clr-dg-cell>{{user.modifiedDate}}</clr-dg-cell>
   </clr-dg-row>
-  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+  <clr-dg-footer>{{applicationUsers.length}} users</clr-dg-footer>
 </clr-datagrid>
 <!-- End Datagrid -->

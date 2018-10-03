@@ -35,7 +35,6 @@
                         <li><a class="nav-link" routerLink="/home/orders/view"  routerLinkActive="active">View PurchaseOrders</a></li>
                     </ul>
                 </section>
-
                 <section class="nav-group collapsible">
                     <input id="userAccount" type="checkbox">
                     <label for="userAccount">User Accounts</label>
@@ -44,7 +43,14 @@
                         <li><a class="nav-link" routerLink="/home/account/view"  routerLinkActive="active">View Users</a></li>
                     </ul>
                 </section>
-
+                <section class="nav-group collapsible">
+                    <input id="Payment" type="checkbox">
+                    <label for="Payment">Payments</label>
+                    <ul class="nav-list">
+                      <li><a class="nav-link" routerLink="/home/items/view"  routerLinkActive="active">Create GRN</a></li>  
+                      <li><a class="nav-link" routerLink="/home/items/add"  routerLinkActive="active">View GRN</a></li>
+                    </ul>
+                </section>
             </section>
         </nav>
     </div>

@@ -37,6 +37,26 @@ export class SupplierService {
       );
   }
 
+  addSupplier (supplier: Supplier): Observable<Supplier> {
+    return this.http.post<Supplier>(this.supplierUrl, supplier, this.httpOptions).pipe(
+      tap((resultSupplier: any) => console.log(`added supplier w/ id=${resultSupplier._id}`)),
+      catchError(this.handleError<Supplier>('addSupplier'))
+    );
+  }
+
+  updateSupplier(supplier: Supplier): Observable<Supplier> {
+    return this.http.put<Supplier>(this.supplierUrl, supplier, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Supplier>('update Supplier'))
+      );
+  }
+
+  deleteSuppliers (suppliers: Supplier[]): Observable<any> {
+    return this.http.request('delete', this.supplierUrl, { headers: this.headers, body: suppliers }).pipe(
+      tap((resultItem: any) => console.log('deleted suppliers')),
+      catchError(this.handleError<Supplier>('deleteSuppliers'))
+    );
+  }
   private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {
 

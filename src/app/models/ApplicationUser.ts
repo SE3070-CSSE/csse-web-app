@@ -10,10 +10,8 @@ export class ApplicationUser {
     public lastname: string,
     public address: string,
     public email: string,
-    public phone: number,
+    public phone: string,
     public username : string,
-    public password: string,
-    public createdDate: string,
-    public modifiedDate: string
+    public password: string
       ) {  }
 }

@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
+import { UserComponent } from './components/users/users.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/users/login/login.component';
+import { RegisterComponent } from './components/users/register/register.component';
 import { AuthService } from './services/auth.service';
 import { ItemAddComponent } from './components/item-add/item-add.component';
 import { ViewItemsComponent } from './components/view-items/view-items.component';
@@ -15,12 +17,17 @@ import { PurchaseOrderViewComponent } from './components/purchase-order-view/pur
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { ViewUsersComponent } from './components/users-view/users-view.component';
-// import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: 'register', redirectTo: '/login', component: RegisterComponent},
-  { path: 'login', component: LoginComponent },
+  { 
+    path: 'register', component: UserComponent,
+    children: [{path: '', component: RegisterComponent}]
+  },
+  { 
+    path: 'login', component: UserComponent,
+    children:[{ path: '', component: LoginComponent}]
+  },
   { path: 'about', component: AboutComponent },
   {
     path: 'home',

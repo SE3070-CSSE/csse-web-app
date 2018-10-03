@@ -1,5 +1,4 @@
 export class Supplier {
-
     constructor(
         public supplierName: string,
         public email: string,
@@ -7,4 +6,3 @@ export class Supplier {
         public contactNumber: string,
       ) {  }
 }
-

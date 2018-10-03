@@ -40,17 +40,6 @@ export class OrderService {
   }
 
   /**
-   *  GET: Get a list of purchase orders from the server. Returns the list of orders upon success.
-   */
-  getPurchaseOrders(): Observable<any[]> {
-    return this.http.get<any[]>(this.purchaseOrderURL, this.httpOptions)
-      .pipe(
-        tap(approvedRequests => console.log(JSON.stringify(approvedRequests))),
-        catchError(this.handleError('getPurchaseOrders', [], 'Could not get orders from server'))
-      );
-  }
-
-  /**
    * POST: post purchase order to server
    * @param order The order to be saved
    */

@@ -16,21 +16,8 @@ import { OrderLineItem } from '../../models/order-line-item';
 })
 export class PurchaseOrderViewComponent implements OnInit {
 
-  purchaseOrders: PurchaseOrder[];
-
-  constructor(private orderService: OrderService) {
-
-  }
-
   ngOnInit(): void {
-    this.getOrders();
-  }
-
-  getOrders(): void {
-    this.orderService.getPurchaseOrders()
-      .subscribe(orders => {
-        this.purchaseOrders = orders;
-      });
+    // throw new Error('Method not implemented.');
   }
 
 }

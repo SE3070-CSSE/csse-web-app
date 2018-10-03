@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/users/login/login.component';
 import { ItemAddComponent } from './components/item-add/item-add.component';
 import { ViewItemsComponent } from './components/view-items/view-items.component';
 import { SupplierAddComponent } from './components/supplier-add/supplier-add.component';
@@ -20,13 +20,18 @@ import { PurchaseRequestViewComponent } from './components/purchase-request-view
 import { PurchaseOrderViewComponent } from './components/purchase-order-view/purchase-order-view.component';
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
+import { ViewUsersComponent } from './components/users-view/users-view.component';
+import { UserComponent } from './components/users/users.component';
+import { RegisterComponent } from './components/users/register/register.component';
 
 @NgModule({
   declarations: [
+    UserComponent,
     AppComponent,
     AboutComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
     ItemAddComponent,
     ViewItemsComponent,
     SupplierAddComponent,
@@ -34,7 +39,8 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     PurchaseRequestViewComponent,
     PurchaseOrderViewComponent,
     PurchaseOrderCreateComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    ViewUsersComponent
   ],
   imports: [
     HttpClientModule,

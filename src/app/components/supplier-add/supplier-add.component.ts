@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { Supplier } from '../../models/supplier';
-import { SupplierService } from '../../services/supplier.service';
 
 @Component({
   selector: 'app-supplier-add',
@@ -10,6 +7,7 @@ import { SupplierService } from '../../services/supplier.service';
 })
 export class SupplierAddComponent implements OnInit {
 
+  constructor() { }
 
   ngOnInit() {
   }

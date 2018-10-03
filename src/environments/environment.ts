@@ -9,7 +9,11 @@ export const environment = {
   purchaseOrderEndpoint: 'https://csse-backend.herokuapp.com/orders',
   supplierEndpoint: 'https://csse-backend.herokuapp.com/suppliers',
   approvePurchaseRequestsEndpoint: 'https://csse-backend.herokuapp.com/requests/approve',
-  loginUrl: 'https://csse-backend.herokuapp.com/login'
+  loginUrl: 'https://procurement-system.herokuapp.com/login',
+  registerUrl: 'https://procurement-system.herokuapp.com/users/signup',
+  listUrl: 'https://procurement-system.herokuapp.com/users/list',
+  updateUrl: 'https://procurement-system.herokuapp.com/users/..update',
+  deleteUrl: 'https://procurement-system.herokuapp.com/users/deactivate'
 };
 
 /*

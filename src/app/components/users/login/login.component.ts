@@ -1,18 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
+import { ApplicationUser } from '../../../models/ApplicationUser';
 
 
 @Component({
+  selector: 'app-login',
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
+
   // TODO: replace this with a data binding to a form so that uname + password can be set
-  user: any = {
-    username: 'saman',
-    password: '123'
-  };
+  user: ApplicationUser = new ApplicationUser(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  );
 
   message: string;
 
@@ -43,5 +55,9 @@ export class LoginComponent {
   logout() {
     this.authService.logout();
     this.setMessage();
+  }
+
+  OnSubmit() {
+    console.log(JSON.stringify(this.user));
   }
 }

@@ -26,6 +26,7 @@
                             required
                             name="firstname"
                             [(ngModel)]="model.firstname"
+                            [ngModelOptions]="{standalone: true}"
                             #firstnameInput="ngModel">
                         <span class="tooltip-content">
                             First Name is Required.
@@ -44,6 +45,7 @@
                             required
                             name="lastname"
                             [(ngModel)]="model.lastname"
+                            [ngModelOptions]="{standalone: true}"
                             #lastnameInput="ngModel">
                         <span class="tooltip-content">
                             Last Name is Required.
@@ -62,6 +64,7 @@
                             required
                             name="address"
                             [(ngModel)]="model.address"
+                            [ngModelOptions]="{standalone: true}"
                             #addressInput="ngModel">
                         <span class="tooltip-content">
                             Address is Required.
@@ -82,6 +85,7 @@
                             name="phone"
                             (keydown)="validateNumberKeyPress()"
                             [(ngModel)]="model.phone"
+                            [ngModelOptions]="{standalone: true}"
                             #phoneInput="ngModel">  
                         <span class="tooltip-content" *ngIf="phoneInput.hasError('required')">
                             Contact number is Required and must include only number
@@ -101,6 +105,7 @@
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                             name="email"
                             [(ngModel)]="model.email"
+                            [ngModelOptions]="{standalone: true}"
                             #emailInput="ngModel">  
                         <span class="tooltip-content" *ngIf="emailInput.hasError('required')">
                             Email Address is required and must be Valid

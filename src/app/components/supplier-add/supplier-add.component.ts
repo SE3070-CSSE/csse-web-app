@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { SupplierService } from '../../services/supplier.service';
+import { Supplier } from '../../models/supplier';
 
 @Component({
   selector: 'app-supplier-add',
@@ -7,14 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupplierAddComponent implements OnInit {
 
-  constructor() { }
+  model = new Supplier(null, null, null, null);
+  validateEmail = true;
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+
+  constructor(private toastr: ToastrService, private supplierService: SupplierService) { }
 
   ngOnInit() {
   }
-  model = new Supplier(null, null, null, null);
-  validateEmail = true;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-
 
   onSubmit() {
     console.log('submit clicked');
@@ -25,11 +28,11 @@ export class SupplierAddComponent implements OnInit {
     );
   }
 
-  
+
   validateEmailKeyPress(evt) {
     const keyEvent = evt || window.event;
     let key;
-    const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+    const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
     // get keycode as string
     key = keyEvent.keyCode || keyEvent.which;
@@ -46,7 +49,5 @@ export class SupplierAddComponent implements OnInit {
       }
     }
   }
-
-  constructor(private toastr: ToastrService, private supplierService: SupplierService) { }
 
 }

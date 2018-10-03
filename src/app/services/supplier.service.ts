@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { Supplier } from '../models/supplier';
 
 @Injectable({
   providedIn: 'root'
@@ -38,21 +39,21 @@ export class SupplierService {
   }
 
   addSupplier (supplier: Supplier): Observable<Supplier> {
-    return this.http.post<Supplier>(this.supplierUrl, supplier, this.httpOptions).pipe(
+    return this.http.post<Supplier>(this.supplierURL, supplier, this.httpOptions).pipe(
       tap((resultSupplier: any) => console.log(`added supplier w/ id=${resultSupplier._id}`)),
       catchError(this.handleError<Supplier>('addSupplier'))
     );
   }
 
   updateSupplier(supplier: Supplier): Observable<Supplier> {
-    return this.http.put<Supplier>(this.supplierUrl, supplier, this.httpOptions)
+    return this.http.put<Supplier>(this.supplierURL, supplier, this.httpOptions)
       .pipe(
         catchError(this.handleError<Supplier>('update Supplier'))
       );
   }
 
   deleteSuppliers (suppliers: Supplier[]): Observable<any> {
-    return this.http.request('delete', this.supplierUrl, { headers: this.headers, body: suppliers }).pipe(
+    return this.http.request('delete', this.supplierURL, { headers: this.headers, body: suppliers }).pipe(
       tap((resultItem: any) => console.log('deleted suppliers')),
       catchError(this.handleError<Supplier>('deleteSuppliers'))
     );

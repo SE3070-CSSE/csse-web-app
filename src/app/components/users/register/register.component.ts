@@ -10,7 +10,7 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  user: ApplicationUser;
+  user: ApplicationUser = new ApplicationUser(null, null, null, null, null, null, null, null, null);
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
   constructor(private userService: UserService, private toastr: ToastrService) { }

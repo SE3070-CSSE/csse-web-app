@@ -15,7 +15,7 @@ export class UserService {
   private listUrl = environment.listUrl;
   private updateUrl = environment.updateUrl;
   private deleteUrl = environment.deleteUrl;
-  private registerUrl=environment.registerUrl;
+  private registerUrl = environment.registerUrl;
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
@@ -61,20 +61,7 @@ export class UserService {
 
 
   registerUser(user: ApplicationUser) {
-    const body: ApplicationUser = {
-      emp_ID:user.emp_ID,
-      emp_type:user.emp_type,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      address:user.address,
-      email: user.email,
-      phone:user.phone,
-      username: user.username,
-      password: user.password
-           
-    }
-    var reqHeader = new HttpHeaders({'No-Auth':'True'});
-    return this.http.post(this.registerUrl, body,{headers : reqHeader});
+    return this.http.post(this.registerUrl, user, this.httpOptions);
   }
 
 

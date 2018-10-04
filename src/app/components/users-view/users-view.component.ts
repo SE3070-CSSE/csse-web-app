@@ -14,7 +14,7 @@ export class ViewUsersComponent implements OnInit {
   selectedForEdit;
   modalOpened;
 
-  model = new ApplicationUser(null, null, null, null, null, null, null, null, null);
+  model = new ApplicationUser(null, null, null, null, null, null, null, null, null, null);
 
   constructor(private toastr: ToastrService, private userService: UserService) { }
 

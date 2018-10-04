@@ -2,7 +2,7 @@
     Users database
 </h2>
 <!-- Loading spinner -->
-<div style="text-align: center" *ngIf="!items">
+<div style="text-align: center" *ngIf="!applicationUsers">
   <span style="display: inline-block" class="spinner spinner-md">
     Loading...
   </span>
@@ -137,19 +137,18 @@
         </div>
     </clr-dg-action-bar>
 
-  <clr-dg-column class="width1">Employee ID</clr-dg-column>
+  <clr-dg-column class="width2">Employee ID</clr-dg-column>
   <clr-dg-column>Username</clr-dg-column>
   <clr-dg-column>Employee Type</clr-dg-column>
   <clr-dg-column>First Name</clr-dg-column>
   <clr-dg-column>Last Name</clr-dg-column>
-  <clr-dg-column>Address</clr-dg-column>
   <clr-dg-column>Email</clr-dg-column>
   <clr-dg-column>Contact</clr-dg-column>
   <clr-dg-column>Created Date</clr-dg-column>
   <clr-dg-column>Modified Date</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of applicationUsers" [clrDgItem]="user">
-    <clr-dg-cell class="width1">{{user.emp_ID}}</clr-dg-cell>
+    <clr-dg-cell class="width2">{{user.emp_ID}}</clr-dg-cell>
     <clr-dg-cell>{{user.username}}</clr-dg-cell>
     <clr-dg-cell>{{user.emp_type}}</clr-dg-cell>
     <clr-dg-cell>{{user.firstname}}</clr-dg-cell>

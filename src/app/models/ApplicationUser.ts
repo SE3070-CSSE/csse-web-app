@@ -12,6 +12,7 @@ export class ApplicationUser {
     public email: string,
     public phone: string,
     public username: string,
-    public password: string
+    public password: string,
+    public authorities: any[]
   ) { }
 }

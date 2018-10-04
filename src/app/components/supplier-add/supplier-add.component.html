@@ -2,7 +2,7 @@
 <h2 class="form-header">
   Add a supplier
 </h2>
-<form #supplierForm="ngForm" (ngSubmit)="onSubmit()" class="clr-form clr-form-horizontal">
+<form #supplierForm="ngForm" (ngSubmit)="onSubmit(); supplierForm.reset()" class="clr-form clr-form-horizontal">
   <section class="form-block">
     <div class="form-group">
       <label for="supplierName">Supplier Name</label>

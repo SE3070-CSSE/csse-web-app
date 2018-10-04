@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  itemEndpoint: 'https://csse-backend.herokuapp.com/items',
-  purchaseRequestEndpoint: 'https://csse-backend.herokuapp.com/requests',
-  purchaseOrderEndpoint: 'https://csse-backend.herokuapp.com/orders',
-  supplierEndpoint: 'https://csse-backend.herokuapp.com/suppliers',
-  approvePurchaseRequestsEndpoint: 'https://csse-backend.herokuapp.com/requests/approve',
+  itemEndpoint: 'https://procurement-system.herokuapp.com/items',
+  purchaseRequestEndpoint: 'https://procurement-system.herokuapp.com/requests',
+  purchaseOrderEndpoint: 'https://procurement-system.herokuapp.com/orders',
+  supplierEndpoint: 'https://procurement-system.herokuapp.com/suppliers',
+  approvePurchaseRequestsEndpoint: 'https://procurement-system.herokuapp.com/requests/approve',
   loginUrl: 'https://procurement-system.herokuapp.com/login',
   registerUrl: 'https://procurement-system.herokuapp.com/users/signup',
   listUrl: 'https://procurement-system.herokuapp.com/users/list',

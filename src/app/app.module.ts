@@ -23,6 +23,7 @@ import { UserAccountComponent } from './components/user-account/user-account.com
 import { ViewUsersComponent } from './components/users-view/users-view.component';
 import { UserComponent } from './components/users/users.component';
 import { RegisterComponent } from './components/users/register/register.component';
+import { GrnViewComponent } from './components/grn-view/grn-view.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RegisterComponent } from './components/users/register/register.componen
     PurchaseOrderViewComponent,
     PurchaseOrderCreateComponent,
     UserAccountComponent,
-    ViewUsersComponent
+    ViewUsersComponent,
+    GrnViewComponent
   ],
   imports: [
     HttpClientModule,

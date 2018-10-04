@@ -17,6 +17,7 @@ import { PurchaseOrderViewComponent } from './components/purchase-order-view/pur
 import { PurchaseOrderCreateComponent } from './components/purchase-order-create/purchase-order-create.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { ViewUsersComponent } from './components/users-view/users-view.component';
+import { GrnViewComponent } from './components/grn-view/grn-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -63,6 +64,12 @@ const routes: Routes = [
           { path: 'profile', component: UserAccountComponent },
           { path: 'view', component: ViewUsersComponent },
           { path: 'register', component: RegisterComponent }
+        ]
+      },
+      {
+        path: 'grn',
+        children: [
+          { path: 'view', component: GrnViewComponent }
         ]
       },
       {

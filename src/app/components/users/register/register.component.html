@@ -123,24 +123,27 @@
     </section>
 </form> -->
 <div class="container">
-  <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+  <form class="col-lg-12 col-md-12 col-sm-12 col-xs-12" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
 
     <div class="row">
       <div class="input-field col s6">
         <input type="text" name="emp_ID" #emp_ID="ngModel" [(ngModel)]="user.emp_ID">
         <label>Employee Number</label>
       </div>
+    </div>
+    <div class="row">
       <div class="input-field col s6">
         <input type="text" name="emp_type" #emp_type="ngModel" [(ngModel)]="user.emp_type">
         <label>Department/ Role</label>
       </div>
     </div>
-
     <div class="row">
       <div class="input-field col s6">
         <input class="validate" type="text" name="username" #username="ngModel" [(ngModel)]="user.username" required>
         <label data-error="Required field!">UserName</label>
       </div>
+    </div>
+    <div class="row">
       <div class="input-field col s6">
         <input class="validate" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="6">
         <label [attr.data-error]="password.errors!=null?(password.errors.required?'Required field!':'Minimum 6 characters needed'):''">Password</label>
@@ -153,23 +156,25 @@
         <label data-error="Invalid email!">Email</label>
       </div>
     </div>
-
     <div class="row">
       <div class="input-field col s6">
         <input type="text" name="firstname" #firstname="ngModel" [(ngModel)]="user.firstname">
         <label>First Name</label>
       </div>
+    </div>
+    <div class="row">
       <div class="input-field col s6">
         <input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname">
         <label>Last Name</label>
       </div>
     </div>
-
     <div class="row">
       <div class="input-field col s6">
         <input type="text" name="address" #address="ngModel" [(ngModel)]="user.address">
         <label>Address</label>
       </div>
+    </div>
+    <div class="row">
       <div class="input-field col s6">
         <input class="validate" type="number" name="phone" #phone="ngModel" [(ngModel)]="user.phone" [pattern]="[0-9]*$">
         <label>Contact Number</label>
@@ -178,7 +183,7 @@
 
     <!-- authorities -->
 
-    <div class="row clr-justify-content-center">
+    <div class="row clr-justify-content-start">
       <div class="input-field col s12">
         <button [disabled]="!userRegistrationForm.valid" class="btn btn-primary" type="submit">Submit</button>
       </div>

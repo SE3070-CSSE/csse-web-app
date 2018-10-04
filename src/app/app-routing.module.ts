@@ -21,10 +21,6 @@ import { ViewUsersComponent } from './components/users-view/users-view.component
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'register', component: UserComponent,
-    children: [{ path: '', component: RegisterComponent }]
-  },
-  {
     path: 'login', component: UserComponent,
     children: [{ path: '', component: LoginComponent }]
   },
@@ -62,6 +58,14 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'users',
+        children: [
+          { path: 'profile', component: UserAccountComponent },
+          { path: 'view', component: ViewUsersComponent },
+          { path: 'register', component: RegisterComponent }
+        ]
+      },
+      {
         path: 'account',
         children: [
           { path: 'profile', component: UserAccountComponent },
@@ -73,7 +77,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(routes) ],
   exports: [RouterModule],
   providers: [
     AuthGuardService,

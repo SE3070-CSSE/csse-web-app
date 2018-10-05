@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  usernameX: string; 
   isLoggedIn = false;
   headers: HttpHeaders = new HttpHeaders();
 
@@ -22,11 +23,14 @@ export class AuthService {
   }
 
   login(user): Observable<any> {
+    this.usernameX = user.username;
+    console.log(this.usernameX);
+    console.log("dhsjbv");
     return this.http.post<any[]>(this.loginUrl, user, { headers: this.headers })
       .pipe(
         tap((loginResponse) => {
           this.JWTtoken = loginResponse.Authorization;
-          this.isLoggedIn = true;
+          this.isLoggedIn = true; 
         })
       );
   }

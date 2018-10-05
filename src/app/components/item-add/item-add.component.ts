@@ -16,7 +16,7 @@ export class ItemAddComponent implements OnInit {
     'WINDOWS', 'PLANKS'];
 
   suppliers: Supplier[] = [];
-
+ 
   model = new Item(null, null, null, null, null, '-');
 
   // submitted = false;

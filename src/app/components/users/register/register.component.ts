@@ -39,6 +39,14 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  // OnSubmit() {
+  //   this.userService.registerUser(this.user)
+  //   .subscribe(
+  //     data => this.toastr.success('User registered'),
+  //     err  => this.toastr.error('Error: User could not be registered')
+  //   );
+  // }
+
   checkboxChanged() {
     this.authorities = this.isAdmin ? ['ADMIN', 'USER'] : ['USER'];
     this.user.authorities = this.authorities;

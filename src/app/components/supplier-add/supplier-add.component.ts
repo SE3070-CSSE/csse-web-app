@@ -17,7 +17,7 @@ export class SupplierAddComponent implements OnInit {
   constructor(private toastr: ToastrService, private supplierService: SupplierService) { }
 
   ngOnInit() {
-  }
+  } 
 
   onSubmit() {
     console.log('submit clicked');

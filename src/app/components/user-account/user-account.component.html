@@ -1,13 +1,44 @@
 <h2 class="form-header">
   My Profile
 </h2>
-<!-- Loading spinner -->
-<div style="text-align: center" *ngIf="!items">
-<span style="display: inline-block" class="spinner spinner-md">
-  Loading...
-</span>
+
+<div>
+    <div class="row">
+        <label for="emp_ID">Employee ID: </label>
+        <label for="emp_ID" aria-haspopup="true"
+        role="tooltip"
+        >dc</label>  
+        <!-- {{User.emp_ID}} -->
+    </div>
+    <div class="row">
+        <label for="emp_type">Department: {{User.emp_type}}</label>
+        <label for="emp_type" aria-haspopup="true"
+        role="tooltip"
+        >dc</label>  
+    </div>
+    <div class="row">
+        <label for="firstname">First Name: {{User.firstname}}</label>
+    </div>    
+    <div class="row">
+        <label for="lastname">Last Name: {{User.lastname}}</label>
+    </div>    
+    <div class="row">
+        <label for="username">Username: {{User.username}}</label>
+    </div>    
+    <div class="row">
+        <label for="address">Address: {{User.address}}</label>
+    </div>    
+    <div class="row">
+        <label for="email">Email: {{User.email}}</label>
+    </div>    
+    <div class="row">
+        <label for="phone">Contact Number: {{User.phone}}</label>
+    </div>
+    <div>
+        
+        <button type="button" class="btn btn-success" (click)="onDelete()"> Edit</button>
+    </div>
 </div>
-<!-- End Loading spinner -->
 
 <!-- Edit Modal -->
 <clr-modal [(clrModalOpen)]="modalOpened">
@@ -110,7 +141,7 @@
                               
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline" (click)="modalOpened = false">Cancel</button>
-                    <button type="submit" class="btn btn-success" [disabled]="!usersForm.form.valid">Submit</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!usersForm.form.valid">Edit</button>
                 </div>
             </section>
         </form>
@@ -153,29 +184,29 @@
                         <input type="password" id="new" placeholder="Enter new password"
                             required
                             name="new"
-                            [(ngModel)]="model.lastname"
+                            [(ngModel)]="model.password"
                             #lastnameInput="ngModel">
                         <span class="tooltip-content">
-                            Last Name is Required.
+                            Input is Required.
                         </span>
                     </label>
                 </div>
 
                 <!-- //confirm password -->
                 <div class="form-group">
-                    <label for="address">Address</label>
-                    <label for="address"
+                    <label for="confirm">Confirm Password</label>
+                    <label for="confirm"
                         aria-haspopup="true"
                         role="tooltip"
                         class="tooltip tooltip-validation tooltip-md"
-                        [class.invalid]="addressInput.invalid && (addressInput.dirty || addressInput.touched)">
-                        <input type="text" id="address" placeholder="Enter Address"
+                        [class.invalid]="confirmInput.invalid && (confirmInput.dirty || confirmInput.touched)">
+                        <input type="password" id="confirm" placeholder="Confirm Passsword"
                             required
-                            name="address"
-                            [(ngModel)]="model.address"
+                            name="password"
+                            [(ngModel)]="model.password"
                             #addressInput="ngModel">
                         <span class="tooltip-content">
-                            Address is Required.
+                            Input is Required.
                         </span>
                     </label>
                 </div>
@@ -189,15 +220,3 @@
     </div>
 </clr-modal>
 <!-- End Modal -->
-
-
-
-<!-- Datagrid -->
-      <div class="btn-group">          
-          <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
-      </div>
-      <div class="btn-group">          
-        <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Reset Password</button>
-    </div>
-  
-<!-- End Datagrid -->

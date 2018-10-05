@@ -18,9 +18,11 @@ import { PurchaseOrderCreateComponent } from './components/purchase-order-create
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { ViewUsersComponent } from './components/users-view/users-view.component';
 import { GrnViewComponent } from './components/grn-view/grn-view.component';
+import { ForgotPasswordComponent } from './components/forgotPassword/forgotPassword.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'forgotPassword', component: ForgotPasswordComponent},
   {
     path: 'login', component: UserComponent,
     children: [{ path: '', component: LoginComponent }]

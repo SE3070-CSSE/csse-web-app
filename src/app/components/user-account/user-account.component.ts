@@ -10,13 +10,26 @@ import { UserService } from '../../services/user.service';
 })
 export class UserAccountComponent implements OnInit {
 
+  user: ApplicationUser;
+  
+
+  constructor(private toastr: ToastrService, private userService: UserService) { }
+
    ngOnInit() {
-    
+    this.getDetails()
   }
 
-  
-  
-  
-  
+  getDetails():void{
+    this.userService.getDetails()
+    .subscribe(user =>{
+      this.user = user;
+      console.log('this.user'+ this.user);
+    })
+  }
+
+
+  OnEdit(){
+
+  }
 }
  

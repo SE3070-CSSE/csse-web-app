@@ -40,7 +40,7 @@ export class UserService {
       );
   }
 
-  getDetails(user: ApplicationUser): Observable<ApplicationUser> {
+  getDetails(): Observable<ApplicationUser> {
     return this.http.get<ApplicationUser>(this.detailsUrl, this.httpOptions)
       .pipe(
         catchError(this.handleError<ApplicationUser>('getDetails'))
@@ -59,18 +59,19 @@ export class UserService {
     console.log(this.updateUrl);
     return this.http.patch<ApplicationUser>(this.updateUrl , user, this.httpOptions)
       .pipe(
+        tap((resultuser: any)=> console.log(resultuser)),
         catchError(this.handleError<ApplicationUser>('updateUser'))
       );
   }
 
   deleteUser(users: ApplicationUser[]): Observable<any> {
     return this.http.request('delete', this.deleteUrl, { headers: this.headers, body: users }).pipe(
-      tap((resultItem: any) => console.log('deleted users')),
+      tap((resultusers: any) => console.log(resultusers)),
       catchError(this.handleError<ApplicationUser>('deleteUsers'))
     );
   }
 
-
+ 
   registerUser(user: ApplicationUser) {
     return this.http.post(this.registerUrl, user, this.httpOptions);
   }

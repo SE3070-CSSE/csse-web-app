@@ -38,12 +38,24 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  
+  
+  // OnSubmit(form: NgForm) {
+  //   this.userService.registerUser(form.value)
+  //     .subscribe((data: any) => {
+  //       if (data.Succeeded === true) {
+  //         this.resetForm(form);
+  //         this.toastr.success('User registration successful');
+  //       } else {
+  //         this.toastr.error(data.Errors[0]);
+  //       }
+  //     });
+  // }
 
   // OnSubmit() {
-  //   this.userService.registerUser(this.user)
-  //   .subscribe(
-  //     data => this.toastr.success('User registered'),
-  //     err  => this.toastr.error('Error: User could not be registered')
+  //   this.userService.registerUser(this.user).subscribe(
+  //     data => this.toastr.success('supplier added'),
+  //     err  => this.toastr.error(err)
   //   );
   // }
 

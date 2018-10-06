@@ -11,5 +11,6 @@ export const environment = {
   listUrl: 'https://procurement-system.herokuapp.com/users/list',
   updateUrl: 'https://procurement-system.herokuapp.com/users/update/',
   deleteUrl: 'https://procurement-system.herokuapp.com/users/deactivate',
-  detailsUrl: 'https://procurement-system.herokuapp.com/users/'
+  detailsUrl: 'https://procurement-system.herokuapp.com/users/',
+  forgotUrl: 'https://procurement-system.herokuapp.com/users/forgotpassword/'
 };

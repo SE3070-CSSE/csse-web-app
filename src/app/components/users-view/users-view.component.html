@@ -83,7 +83,7 @@
                             required
                             pattern="[0-9]{10}"
                             name="phone"
-                            (keydown)="validateNumberKeyPress()"
+                            (keydown)="validateNumberKeyPress($event)"
                             [(ngModel)]="model.phone"
                             [ngModelOptions]="{standalone: true}"
                             #phoneInput="ngModel">  

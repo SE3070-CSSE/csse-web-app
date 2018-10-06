@@ -46,10 +46,12 @@
         </div>
         <br>
         
+
     </div> 
     <div>        
         <button type="button" class="btn btn-success" (click)="OnEdit()">Edit</button>
         <button type="button" class="btn btn-success" (click)="OnEditPwd()">Reset Password</button>
+
     </div>
 </div>
 
@@ -124,7 +126,6 @@
                             required
                             pattern="[0-9]{10}"
                             name="phone"
-                            (keydown)="validateNumberKeyPress()"
                             [(ngModel)]="model.phone"
                             #phoneInput="ngModel">  
                         <span class="tooltip-content" *ngIf="phoneInput.hasError('required')">
@@ -198,7 +199,7 @@
                             required
                             name="new"
                             [(ngModel)]="model.password"
-                            #lastnameInput="ngModel">
+                            #newInput="ngModel">
                         <span class="tooltip-content">
                             Input is Required.
                         </span>
@@ -212,7 +213,7 @@
                         aria-haspopup="true"
                         role="tooltip"
                         class="tooltip tooltip-validation tooltip-md"
-                        [class.invalid]="confirmInput.invalid && (confirmInput.dirty || confirmInput.touched)">
+                        [class.invalid]="addressInput.invalid && (addressInput.dirty || addressInput.touched)">
                         <input type="password" id="confirm" placeholder="Confirm Passsword"
                             required
                             name="password"

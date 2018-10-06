@@ -18,7 +18,9 @@ export class ForgotPasswordComponent implements OnInit {
     
   }
 
-  
+  onSubmit() {
+    
+  }
  
 
 }

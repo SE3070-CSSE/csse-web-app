@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { ApplicationUser } from '../../models/ApplicationUser';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-account',
@@ -10,12 +8,15 @@ import { UserService } from '../../services/user.service';
 })
 export class UserAccountComponent implements OnInit {
 
-  user: ApplicationUser;
+user: ApplicationUser;
   
+  User: ApplicationUser = new ApplicationUser(null, null, null, null, null, null, null, null, null, null);
+  model: ApplicationUser = new ApplicationUser(null, null, null, null, null, null, null, null, null, null);
+  modalOpened = false;
 
   constructor(private toastr: ToastrService, private userService: UserService) { }
 
-   ngOnInit() {
+  ngOnInit() {
     this.getDetails()
   }
 
@@ -27,9 +28,13 @@ export class UserAccountComponent implements OnInit {
     })
   }
 
-
-  OnEdit(){
+  onEdit() {
 
   }
+
+  onSubmitEdited() {
+
+  }
+
+
 }
- 

@@ -8,7 +8,7 @@
   </span>
 </div>
 <!-- End Loading spinner -->
-
+ 
 <!-- Edit Modal -->
 <clr-modal [(clrModalOpen)]="modalOpened">
     <h3 class="modal-title">Edit User Details</h3>
@@ -83,7 +83,7 @@
                             required
                             pattern="[0-9]{10}"
                             name="phone"
-                            (keydown)="validateNumberKeyPress()"
+                            (keydown)="validateNumberKeyPress($event)"
                             [(ngModel)]="model.phone"
                             [ngModelOptions]="{standalone: true}"
                             #phoneInput="ngModel">  

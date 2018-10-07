@@ -24,6 +24,7 @@ import { ViewUsersComponent } from './components/users-view/users-view.component
 import { UserComponent } from './components/users/users.component';
 import { RegisterComponent } from './components/users/register/register.component';
 import { GrnViewComponent } from './components/grn-view/grn-view.component';
+import { ForgotPasswordComponent } from './components/forgotPassword/forgotPassword.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { GrnViewComponent } from './components/grn-view/grn-view.component';
     PurchaseOrderCreateComponent,
     UserAccountComponent,
     ViewUsersComponent,
-    GrnViewComponent
+    GrnViewComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     HttpClientModule,

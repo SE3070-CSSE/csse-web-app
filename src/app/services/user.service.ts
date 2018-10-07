@@ -12,10 +12,13 @@ import { AuthService } from './auth.service';
 })
 export class UserService {
 
+  private usn=this.authService.usernameX;
   private listUrl = environment.listUrl;
-  private updateUrl = environment.updateUrl;
+  private updateUrl = environment.updateUrl + this.usn;
+  private detailsUrl = environment.detailsUrl + this.usn;
   private deleteUrl = environment.deleteUrl;
   private registerUrl = environment.registerUrl;
+  private forgotUrl = environment.forgotUrl + this.usn;
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
@@ -37,33 +40,46 @@ export class UserService {
       );
   }
 
+  getDetails(): Observable<ApplicationUser> {
+    return this.http.get<ApplicationUser>(this.detailsUrl, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<ApplicationUser>('getDetails'))
+      );
+  }
 
-  // addItem(item: Item): Observable<Item> {
-  //   return this.http.post<Item>(this.itemUrl, item, this.httpOptions).pipe(
-  //     tap((resultItem: any) => console.log(`added item w/ id=${resultItem._id}`)),
-  //     catchError(this.handleError<Item>('addItem'))
-  //   );
+  // getemp(user: ApplicationUser): Observable<ApplicationUser> {
+  //   return this.http.get<ApplicationUser>(this.listUrl, this.httpOptions)
+  //     .pipe(
+  //       tap(users => console.log(JSON.stringify(users))),
+  //       catchError(this.handleError(<ApplicationUser>, 'Could not get users from server'))
+  //     );
   // }
 
   updateUser(user: ApplicationUser): Observable<ApplicationUser> {
-    return this.http.put<ApplicationUser>(this.updateUrl, user, this.httpOptions)
+    console.log(this.updateUrl);
+    return this.http.patch<ApplicationUser>(this.updateUrl , user, this.httpOptions)
       .pipe(
+        tap((resultuser: any)=> console.log(resultuser)),
         catchError(this.handleError<ApplicationUser>('updateUser'))
       );
   }
 
   deleteUser(users: ApplicationUser[]): Observable<any> {
     return this.http.request('delete', this.deleteUrl, { headers: this.headers, body: users }).pipe(
-      tap((resultItem: any) => console.log('deleted users')),
+      tap((resultusers: any) => console.log(resultusers)),
       catchError(this.handleError<ApplicationUser>('deleteUsers'))
     );
   }
 
-
+ 
   registerUser(user: ApplicationUser) {
     return this.http.post(this.registerUrl, user, this.httpOptions);
   }
 
+  forgotPassword(user: ApplicationUser){
+    return this.http.patch(this.forgotUrl, user, this.httpOptions);
+  }
+ 
 
   private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {

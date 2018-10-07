@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 import { ApplicationUser } from '../../models/ApplicationUser';
-
+ 
 @Component({
   selector: 'app-users-view',
   templateUrl: './users-view.component.html',

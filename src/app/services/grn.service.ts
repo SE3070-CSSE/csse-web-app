@@ -5,6 +5,7 @@ import { Observable, of, throwError } from 'rxjs/index';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { environment } from './../../environments/environment';
 import { AuthService } from './auth.service';
+import { Grn } from '../models/grn';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { AuthService } from './auth.service';
 export class GrnService {
 
   private grnURL = environment.grnEndpoint;
+  private payGrnURL = environment.payGrnEndpoint;
   private headers: HttpHeaders = new HttpHeaders();
   private httpOptions = {};
 
@@ -27,6 +29,13 @@ export class GrnService {
       .pipe(
         tap(grns => console.log(JSON.stringify(grns))),
         catchError(this.handleError('getGoodsReceivedNotes', [], 'Could not get grns from server'))
+      );
+  }
+
+  approvePayments(grn: Grn): Observable<any> {
+    return this.http.put<any>(this.payGrnURL, grn, this.httpOptions)
+      .pipe(
+        catchError(this.handleError('payGRN', [], 'server error'))
       );
   }
 

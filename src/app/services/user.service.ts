@@ -90,7 +90,9 @@ export class UserService {
       console.log(`${operation} failed: ${error.message}`);
 
       if (result) {
-        this.toastr.error(`Internal error: ${message}`);
+        if (error.status === 403) {
+          this.toastr.info(`${operation} failed: Sorry, You do not have access permission`);
+        }
         return of(result as T);
       } else {
         return throwError(`${operation} failed`);

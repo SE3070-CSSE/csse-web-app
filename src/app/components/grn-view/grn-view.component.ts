@@ -43,10 +43,7 @@ export class GrnViewComponent implements OnInit {
         
         this.selectedGrn.paymentStatus='PAYMENT_COMPLETED';
         console.log(this.selectedGrn);
-        this.grnService.approvePayments(this.selectedGrn).subscribe(response => {
-          console.log(response);
-          
-        })
+        this.grnService.approvePayments(this.selectedGrn);
         
         //this.getOrders();
         //this.selectedGrn.paymentStatus=true;

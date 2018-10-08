@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay, tap, map } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { delay, tap, map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ToastrService } from 'ngx-toastr';
 
 const helper = new JwtHelperService();
 
@@ -13,7 +14,7 @@ const helper = new JwtHelperService();
 export class AuthService {
   usernameX: string;
   isLoggedIn = false;
-  isAdmin  = false;
+  isAdmin = false;
   headers: HttpHeaders = new HttpHeaders();
 
   loginUrl = environment.loginUrl;
@@ -22,7 +23,7 @@ export class AuthService {
   redirectUrl: string;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toastr: ToastrService) {
     this.headers = this.headers.append('Content-Type', 'application/json');
   }
 
@@ -32,14 +33,16 @@ export class AuthService {
     console.log('dhsjbv');
     return this.http.post<any[]>(this.loginUrl, user, { headers: this.headers })
       .pipe(
-        tap((loginResponse) => {
+        tap((loginResponse: any) => {
           this.JWTtoken = loginResponse.Authorization;
           const decodedToken = helper.decodeToken(this.JWTtoken);
           console.log('permissions array ' + JSON.stringify(decodedToken.roles));
           this.isAdmin = this.checkAdmin(decodedToken.roles);
           console.log('is admin ? ' + JSON.stringify(this.isAdmin));
           this.isLoggedIn = true;
-        }));
+        }),
+        catchError(this.handleError<any>('login', 'Username or password is incorrect'))
+      );
   }
 
   logout(): void {
@@ -48,5 +51,15 @@ export class AuthService {
 
   checkAdmin(roles: string[]) {
     return (roles.indexOf('ADMIN') > -1);
+  }
+
+  private handleError<T>(operation = 'operation', message?: string) {
+    return (error: any): Observable<T> => {
+
+      console.error('error ' + JSON.stringify(error)); // log to console instead
+
+      this.toastr.error(`Login error: ${message}`);
+      return throwError(`${operation} failed`);
+    };
   }
 }

@@ -9,6 +9,7 @@ export const environment = {
   purchaseOrderEndpoint: 'https://procurement-system.herokuapp.com/orders',
   supplierEndpoint: 'https://procurement-system.herokuapp.com/suppliers',
   grnEndpoint: 'https://procurement-system.herokuapp.com/Grn',
+  payGrnEndpoint: 'https://procurement-system.herokuapp.com/Grn/pay',
   approvePurchaseRequestsEndpoint: 'https://procurement-system.herokuapp.com/requests/approve',
   loginUrl: 'https://procurement-system.herokuapp.com/login',
   registerUrl: 'https://procurement-system.herokuapp.com/users/signup',

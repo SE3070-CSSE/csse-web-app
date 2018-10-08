@@ -8,30 +8,29 @@
   </span>
 </div>
 <!-- End Loading spinner -->
-
 <!-- Datagrid -->
 <clr-datagrid *ngIf="goodsReceivedNotes" [(clrDgSingleSelected)]="selectedGrn" [clDgRowSelection]="true">
 
-  <clr-dg-action-bar>
+  <!-- <clr-dg-action-bar>
     <div class="btn-group">
       <button type="button" class="btn btn-sm btn-secondary" (click)="makePayment()" [disabled]="!selectedGrn">
         <clr-icon shape="checkbox-list"></clr-icon> Make Payment
       </button>
     </div>
-  </clr-dg-action-bar>
+  </clr-dg-action-bar> -->
 
-  <clr-dg-column class="width1">Order ID</clr-dg-column>
+  <clr-dg-column>Order ID</clr-dg-column>
   <clr-dg-column>Supplier</clr-dg-column>
-  <clr-dg-column>GRN Status</clr-dg-column>
+  <clr-dg-column>Payment Status</clr-dg-column>
   <clr-dg-column>Received on</clr-dg-column>
   <clr-dg-column>Order Total</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let grn of goodsReceivedNotes" [clrDgItem]="grn">
-    <clr-dg-cell class="width1">{{grn._id}}</clr-dg-cell>
+    <clr-dg-cell>{{grn._id}}</clr-dg-cell>
     <clr-dg-cell>{{grn.supplier.supplierName}}</clr-dg-cell>
     <clr-dg-cell>{{grn.paymentStatus | uppercase }}</clr-dg-cell>
     <clr-dg-cell>{{grn.recievedOn}}</clr-dg-cell>
-    <clr-dg-cell>{{grn.totalPrice}}</clr-dg-cell>
+    <clr-dg-cell>Rs.{{grn.totalPrice}}</clr-dg-cell>
 
     <clr-dg-row-detail *clrIfExpanded>
       <table class="table table-compact" style="margin-left: -3%;">
@@ -55,3 +54,8 @@
 </clr-datagrid>
 
 <!-- End Datagrid -->
+<label for="">Total :</label>
+Rs.<input type="number" [(ngModel)]="finalAmount" style="padding-bottom: 10px;" value="{{selectedGrn.totalPrice}}">
+
+      <!-- <p *ngIf="paypalLoad">Paypal button is loading</p> -->
+      <div id="paypal-checkout-btn" (click)="makePayment()"></div>  

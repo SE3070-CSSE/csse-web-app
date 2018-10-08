@@ -54,7 +54,8 @@
 </clr-datagrid>
 
 <!-- End Datagrid -->
+<label for="">Total :</label>
 Rs.<input type="number" [(ngModel)]="finalAmount" style="padding-bottom: 10px;" value="{{selectedGrn.totalPrice}}">
 
-      <p *ngIf="paypalLoad">Paypal button is loading</p>
+      <!-- <p *ngIf="paypalLoad">Paypal button is loading</p> -->
       <div id="paypal-checkout-btn" (click)="makePayment()"></div>  

@@ -39,6 +39,16 @@ export class GrnViewComponent implements OnInit {
     },
     onAuthorize: (data, actions) => {
       return actions.payment.execute().then(payment => {
+        console.log('payment success');
+        
+        this.selectedGrn.paymentStatus='PAYMENT_COMPLETED';
+        console.log(this.selectedGrn);
+        this.grnService.approvePayments(this.selectedGrn).subscribe(response => {
+          console.log(response);
+          
+        })
+        
+        //this.getOrders();
         //this.selectedGrn.paymentStatus=true;
       });
     }

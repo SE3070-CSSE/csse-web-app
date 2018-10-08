@@ -30,8 +30,14 @@ export class AuthService {
       .pipe(
         tap((loginResponse) => {
           this.JWTtoken = loginResponse.Authorization;
+          
+           let jwtData= this.JWTtoken.split('.')[1]
+          let decode=window.atob(jwtData)
+          let decodedData=JSON.parse(decode)
+          let isAdmin=decodedData.admin
+
+          console.log(jwtData, decode, decodedData, isAdmin)
           this.isLoggedIn = true; 
-        })
       );
   }
 
